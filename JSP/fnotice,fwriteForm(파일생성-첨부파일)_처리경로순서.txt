@@ -1,0 +1,11 @@
+파일 - save as - fnotice로 이름변경
+=> notice 파일은 그대로 유지되고 fnotice가 하나 더 생김
+
+fwriteForm도 같은 방법으로 하나 더 생셩해줌
+
+fnotice,fwriteForm은 첨부파일 첨부가 가능한 글쓰기
+
+
+
+처리경로
+web.xml - BoardFrontController - FileBoardWritePro

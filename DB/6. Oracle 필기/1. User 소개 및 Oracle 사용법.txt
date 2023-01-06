@@ -1,0 +1,46 @@
+<OS User>
+1. root(pw : oracle01)
+- OS 관리자의 권한 소유
+
+2. oracle(pw : oracle)
+- /home/oracle 디렉토리 권한 소유
+- /u01/app/oracle 디렉토리 권한 소유
+--------------------------------------------------------- 
+<"ORCL" DB User>
+1. sys(pw : oracle)
+- DB 생성 시 자동 생성되는 계정
+- sysdba 권한 소유(dba권한 + DB 시작/종료 + DB 생성)
+- SQL> conn sys/oracle as sysdba
+
+2. system(pw : oracle)
+- DB 생성 시 자동 생성되는 계정
+- dba 권한 소유
+- SQL> conn system/oracle
+
+3. hr(pw : hr)
+- 일반 DB User
+- 객체(object - table, view, index 등)를 운영할 수 있는 권한
+- SQL> conn hr/hr
+--------------------------------------------------------
+<Oracle DBMS로 관리되는 DB 시작 및 User 접속 방법>
+1. 가상 PC 시작
+2. OS User 로그인 - username : oracle / password : oracle
+3. 바탕화면에서 오른쪽 마우스 클릭 후 터미널 열기
+4. OS의 리스너 시작	$] lsnrctl start
+5. SQL Plus 실행		$] sqlplus /nolog
+6. SYS 접속		SQL> conn sys/oracle as sysdba
+7. DB 시작		SQL> startup
+8. HR 접속		SQL> conn hr/hr
+-------------------------------------------------------
+[참고] hr 패스워드 변경
+SQL> alter user hr
+     identified by hr;
+------------------------------------------------------
+<Oracle 관련 프로그램>
+- SQL Plus : TUI 프로그램
+- SQL Developer : GUI 프로그램
+------------------------------------------------------
+<컬럼 사이즈 조절 명령어> (문자가 저장된 컬럼만 사용가능함!)
+SQL> col last_name format a20
+------------------------------------------------------
+l : 위에 적었던 쿼리구문 다시 보여줌

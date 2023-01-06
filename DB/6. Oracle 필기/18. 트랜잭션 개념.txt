@@ -1,0 +1,46 @@
+(트랜잭션 시작)
+update ---;
+insert ---;
+update ---;
+commit;
+(트랜잭션 종료)
+
+(트랜잭션 시작)
+delete ---;
+delete ---;
+rollback;
+(트랜잭션 종료)
+
+(트랜잭션 시작)
+create table ---; (DDL)
+[autocommit]
+(트랜잭션 종료)
+
+(트랜잭션 시작)
+grant ---; (DCL)
+[autocommit]
+(트랜잭션 종료)
+
+(트랜잭션 시작)
+insert ---;
+update ---;
+update ---;
+create table ---;(DDL)
+[autocommit]
+(트랜잭션 종료)
+
+(트랜잭션 시작)
+update ---;
+delete ---;
+sqlplus 또는 sqldeveloper를 정상종료
+[autocommit]
+(트랜잭션 종료)
+
+(트랜잭션 시작)
+update ---;
+delete ---;
+sqlplus 또는 sqldeveloper를 비정상종료
+[autorollback]
+(트랜잭션 종료)
+
+

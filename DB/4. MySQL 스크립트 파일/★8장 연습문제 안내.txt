@@ -1,0 +1,25 @@
+//트랜잭션 시작
+3. insert ---; (4개의 행 삽입)
+4. select ---; (미리보기)
+5. commit; 
+//트랜잭션 종료
+
+//트랜잭션 시작
+6. update ---;
+7. update ---;
+8. select ---; (미리보기)
+9. delete ---;
+10. select ---; (미리보기)
+11. commit;
+//트랜잭션 종료
+
+//트랜잭션 시작
+12. insert ---;
+13. select ---; (미리보기)
+14. savepoint 생성
+15. delete ---; (모든행 삭제)
+16. select ---; (미리보기)
+17. savepoint로 롤백
+18. select ---; (미리보기)
+19. commit;
+//트랜잭션 종료

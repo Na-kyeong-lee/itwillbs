@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+
+.box {border: 1px solid; 
+margin:50px;
+padding:30px; }
+
+
+.in, .bl {border: 1px solid; 
+width: 400px;}
+
+.in>* {border: 1px solid #00f;
+ width: 100px;} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

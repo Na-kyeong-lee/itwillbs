@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+body {background-color: #c6feff;
+background-image: url("img/bare.jpg")
+ , url("img/abend.jpg");
+background-repeat: no-repeat;
+background-size: 100% 50%, 100% 50%;
+background-position:0 0, 0 100%;  
+background-attachment: scroll, fixed;
+font-size: 18px;
+line-height: 1.8 
+  /* 행간(줄간격) */;}
+
+hr {margin: 5em 0;}
+
+ol>li, ul>li {
+margin-bottom: 2.5em;
+ font-size: 20px;
+ font-weight: bold;} 
+
+ul>li>ul>li {
+margin-bottom: 1.5em;
+ font-size: 18px;
+ font-weight: normal; } 
+
+
+
+ /* background-attachment 스크롤 여부 */
+#sec01 {background-color: #fff;}
+
+#sec01>ol>li {float: left;
+ margin-right: 2em;}
+ 
+hr {clear: both;} 
+ 
+#sec01>p {border: 4px double #37a;
+margin:1em 1em 20em;  padding: 1em;
+width: 450px; height: 300px;
+overflow: auto /* 스크롤바 생성 */;
+display: inline-block /* 나란히 배치 */;
+background-image: url("img/high.jpg");
+background-size: cover;
+background-position: 0 30%;}
+
+.sc {background-attachment: scroll;}
+.fx {background-attachment: fixed;}
+.lc {background-attachment: local;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

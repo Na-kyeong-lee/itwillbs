@@ -1,0 +1,9 @@
+<JSP 흐름>
+1) web.xml 파일에 기본적으로 있는 index.html을 만들어줌
+2) index.html에서 이동할 가상주소를 적어주고 보니 이동할 가상주소 파일을 만들어줘야됨(CartList)
+3) CartList 자바파일 만들어주고 Action 인터페이스를 구현해줌
+4) 
+
+
+
+

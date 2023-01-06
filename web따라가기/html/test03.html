@@ -1,0 +1,203 @@
+﻿<html>
+ <head>
+  <title>목록 만들기</title>
+ </head>
+ <body>
+ <h1>&#9973;List - 목록 만들기</h1>
+ <hr>
+ 
+ <h2>html tag로 만드는 목록 3가지</h2>
+  <p>
+   &lt;ul&gt; = 순서가 없는 목록<br>
+   &lt;ol&gt; = 순서가 있는 목록<br>	
+   &lt;dl&gt; = 정의 목록
+  </p>
+  
+  <hr>
+ <h3> ul - 순서가 없는 목록</h3>
+  <ul>
+   <li>&lt;ul&gt; = 순서가 없는 목록</li>
+   <li>&lt;ol&gt; = 순서가 있는 목록</li>
+   <li>&lt;dl&gt; = 정의 목록</li>   
+  </ul>
+
+ <ul> 
+  <li>html</li>
+  <li>css</li>
+  <li>js</li>
+ </ul>
+ <h4>문제. 순서 없는 목록 만들기</h4>
+ <ul>
+  <li>빨강</li>
+  <li>초록</li>
+  <li>파랑</li>
+ </ul> 
+    
+  <hr>
+ <h3>ol - 순서가 있는 목록</h3>
+
+ <ol> 
+  <li>red=rgb(255,0,0)=#ff0000</li>
+  <li>green=rgb(0,255,0)=#00ff00</li>
+  <li>blue=rgb(0,0,255)=#0000ff</li>
+  <li style="color:#ffff00;">
+   yellow=rgb(255,255,0)=#ffff00</li>
+  <li>white=rgb(255,255,255)=#ffffff</li>
+  <li>black=rgb(0,0,0)=#000000</li>
+ </ol>
+ <ol>
+  <li><mark>html</mark> - 웹페이지의 <b>구조</b>를 담당.</li>
+  <li><mark>css</mark> - 웹페이지의 <b>디자인</b>을 담당.</li>
+  <li><mark>js</mark> - 웹페이지의 <b>동적인 효과</b>를 담당.</li>
+ </ol>
+
+ <h4>문제. 순서 있는 목록 만들기</h4>
+ <ol>
+  <li>web</li>
+  <li>java</li>
+  <li>jsp</li>
+  <li>db</li>
+  <li>job</li>
+ </ol>
+
+ <hr>
+ <h4>ol 순서 있는 목록의 모양 바꾸기 
+   <small>(type="1/a/A/i/I")</small>
+ </h4>
+  (type="1")	
+ <ol type="1">
+  <li>web</li>
+  <li>java</li>
+  <li>jsp</li>
+  <li>db</li>
+  <li>job</li>
+ </ol>
+ (type="a")
+ <ol type="a">
+  <li>web</li>
+  <li>java</li>
+  <li>jsp</li>
+  <li>db</li>
+  <li>job</li>
+ </ol>
+
+ (type="A")
+ <ol type="A">
+  <li>web</li>
+  <li>java</li>
+  <li>jsp</li>
+  <li>db</li>
+  <li>job</li>
+ </ol> 
+
+ (type="i")
+ <ol type="i">
+  <li>web</li>
+  <li>java</li>
+  <li>jsp</li>
+  <li>db</li>
+  <li>job</li>
+ </ol>
+ 
+ (type="I")
+ <ol type="I">
+  <li>web</li>
+  <li>java</li>
+  <li>jsp</li>
+  <li>db</li>
+  <li>job</li>
+ </ol>
+
+ <h4>ol의 시작 바꾸기 <small>(start="n")</small> </h4>
+ <ol start="10">
+  <li>red</li>
+  <li>green</li>
+  <li>blue</li>
+ </ol>
+
+ <ol start="6" type="a">
+  <li>red</li>
+  <li>green</li>
+  <li>blue</li>
+ </ol>
+
+ <hr>
+ <h3>하위목록 만들기</h3>
+  <ul>
+   <li>커피
+    <ul>
+     <li>hot</li>
+     <li>cold
+      <ol> 
+       <li>latte</li>
+       <li>ameri</li>
+       <li>capu</li>
+      </ol>
+     </li>	
+    </ul>
+   </li>
+   <li>차
+    <ul>
+     <li>hot
+      <ol>
+       <li>cocoa</li>
+       <li>milk</li>
+       <li>green tea</li>
+      </ol>
+     </li>
+     <li>cold</li>
+    </ul>
+   </li>
+   <li>음료</li>
+  </ul>
+    
+ <hr>
+ <h3>dl - 정의 목록</h3>
+ <dl>
+  <dt>html</dt>
+  <dd>웹페이지의 구조를 담당.</dd>
+ </dl>
+
+ <dl>
+  <dt>html</dt>
+  <dd>웹페이지의 구조를 담당.</dd>
+  <dt>css</dt> 
+  <dd>웹페이지의 디자인을 담당.</dd>
+  <dt>js</dt>
+  <dd>웹페이지의 동적인 효과를 담당.</dd>
+ </dl>
+
+ <dl>
+  <dt>html</dt>
+  <dd>Hyper Text Markup Language의 약자.</dd>
+  <dd>웹페이지를 만드는 프로그램언어.</dd>
+  <dd>웹페이지의 구조를 담당.</dd>
+ </dl>
+
+ <dl>
+  <dt>&lt;dl&gt;</dt>
+  <dd>정의 목록을 구성하는 태그</dd>
+  <dt>&lt;dt&gt;</dt>
+  <dd>정의 목록의 정의 대상을 지정하는 태그</dd>
+  <dt>&lt;dd&gt;</dt>
+  <dd>정의 목록의 정의 내용을 지정하는 태그</dd>
+ </dl>
+
+
+ <h4>문제. 정의 목록 만들기</h4>
+ <dl>
+  <dt>이순신</dt>
+  <dd>자 여해(汝諧), 시호 충무(忠武)</dd>
+  <dd>1545년(명종 즉위년) ~ 1598년(선조 31)</dd>
+  <dd>조선시대 정읍현감, 진도군수, 전라좌도수군절도사 등을 역임한 무신.
+  </dd>
+ </dl>
+
+ </body> 
+</html>
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+69쪽 예제3번
+
+select emp.last_name, emp.employee_id
+from employees emp
+where emp.employee_id not in (select mgr.manager_id
+			      from employees mgr
+			      where manager_id is not null)
+order by employee_id;
+
+============================================================
+
+70쪽 예제 2번
+
+select first_name, department_id, salary
+from employees
+where(salary, department_id) in
+			     (select min(salary), department_id
+			      from employees			
+			      GROUP by department_id)
+order by department_id;
+
+
+
+

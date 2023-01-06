@@ -1,0 +1,10 @@
+(2장 연습문제)
+1.
+col "Employee" format a20
+SELECT employee_id "Emp #", last_name "Employee",
+       job_id "Job", hire_date "Hire Date"
+FROM employees;
+
+2.
+SELECT last_name || ', ' || job_id as "Employee and Title"
+FROM employees;

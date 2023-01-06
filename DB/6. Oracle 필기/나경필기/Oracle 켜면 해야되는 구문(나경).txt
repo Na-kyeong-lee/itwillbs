@@ -1,0 +1,17 @@
+<오라클 켜면 해야되는 구문>
+1) lsnrctl start : 리스너(Listner) 켬
+2) sqlplus /nolog
+3) conn sys/oracle as sysdba
+4) startup
+5) conn hr/hr
+6) show user
+
+
+<oracle developer 비밀번호>
+hr
+
+
+
+<오라클 컬럼사이즈 변경하는 구문>
+col 컬럼명 format 변경할 사이즈
+=> ex)  col last_name format a20;

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js2/test3.html</title>
+<script type="text/javascript">
+// window - document - form - text, password,textarea
+// 텍스트 상자 정보를 저장하는 내장객체
+// document.폼이름.텍스트상자이름.변수
+// => document.fr.tx.type, document.fr.tx.value
+// document.폼이름.텍스트상자이름.함수()
+// => document.fr.tx.focus(), document.fr.tx.blur()
+// => document.fr.tx.select()
+function fun1() {
+	alert(document.fr.tx.type); //text
+	alert(document.fr.tx.value); //입력한 값
+	//텍스트상자에 커서 깜박
+	document.fr.tx.focus();
+	//커서 깜박 해제
+	document.fr.tx.blur();
+	//텍스트상자에 입력값 블럭 설정
+	document.fr.tx.select();
+}
+function fun2() {
+	document.fr.tx.value="입력값";
+}
+function fun3() {
+	//텍스트 상자 value 없으면 제어
+// 	alert(document.fr.tx.value=="");
+	// 텍스트 상자 value 길이 구하기
+	// 문자열내장객체.변수=>문자열.length 문자열 길이 저장변수
+	// 문자열내장객체.함수()
+// 	alert(document.fr.tx.value.length);
+	
+	// 텍스트 상자 value값이 "" 같으면 => 제어
+	if(document.fr.tx.value==""){
+		alert("아이디 입력하세요");
+		document.fr.tx.focus();
+		//멈춤, 함수 호출한곳으로 되돌아감
+		return;
+	}
+	// 아이디 5자만 입력=> 아이디 문자열 길이가 5가 아니면
+	if(document.fr.tx.value.length != 5 ){
+		alert("아이디 5자 입력하세요");
+		document.fr.tx.focus();
+		//멈춤, 함수 호출한곳으로 되돌아감
+		return;
+	}
+	
+	if(document.fr.pass.value==""){
+// 		"비밀번호 입력하세요", 포커스
+		alert("비밀번호 입력하세요");
+		document.fr.pass.focus();
+		//멈춤, 함수 호출한곳으로 되돌아감
+		return;
+	}
+	// 비밀번호 길이 7자 이상이 아니면 (7자보다 작으면 )
+	// "비밀번호 7자 입니다." 포커스 깜박
+	if(document.fr.pass.value.length < 7){
+		alert("비밀번호 7자 이상입니다");
+		document.fr.pass.focus();
+		//멈춤, 함수 호출한곳으로 되돌아감
+		return;
+	}
+	
+	if(document.fr.ta.value==""){
+		alert("자기소개 입력하세요");
+		document.fr.ta.focus();
+		//멈춤, 함수 호출한곳으로 되돌아감
+		return;
+	}
+	// 자기소개 4~9 사이 입력 => 아니면 제어
+	// 4보다 작으면 또는  9보다 크면 => 자기소개 4~9 입력,포커스 
+	if(document.fr.ta.value.length<4 || document.fr.ta.value.length>9){
+		alert("자기소개 4~9자 입력");
+		document.fr.ta.focus();
+		//멈춤, 함수 호출한곳으로 되돌아감
+		return;
+	}
+	//서버 전송
+	document.fr.submit();
+	
+}
+</script>
+</head>
+<body>
+<form action="a.jsp" method="get" name="fr">
+아이디 : <input type="text" name="tx"><br>
+비밀번호 : <input type="password" name="pass"><br>
+자기소개 : <textarea name="ta" rows="5" cols="10"></textarea>
+<input type="button" value="정보확인" onclick="fun1()">
+<input type="button" value="정보변경" onclick="fun2()">
+<input type="button" value="제어" onclick="fun3()">
+</form>
+</body>
+</html>

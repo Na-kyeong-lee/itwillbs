@@ -1,0 +1,21 @@
+<Object 유형>
+1. Table
+- 사용방법: select, insert, update, delete
+- 정의방법: create table, alter table, drop table, truncate table
+
+
+2. View
+- 사용방법(DML): select, insert, update, delete
+- 정의방법(DDL): create [or replace(수정가능)] view, drop view
+
+3. Sequence
+- 사용방법(DML): 시퀀스명.nextval, 시퀀스명.currval
+- 정의방법(DDL): create sequence, alter sequence, drop sequence
+
+4. Index
+- 사용방법(DML): X
+- 정의방법(DDL): create index, alter index, drop index
+
+5. Synonym
+- 사용방법(DML): X
+- 정의방법(DDL): create synonym, drop synonym

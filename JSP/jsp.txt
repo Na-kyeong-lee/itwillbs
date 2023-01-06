@@ -1,0 +1,440 @@
+홍진숙
+hongcine@itwillbs.co.kr
+
+K-디지털 트레이닝(디지털 신기술)
+기업에서 요청하는 프로젝트, 기업 채용 약정, 
+기업 현장 실무 특강
+
+프로젝트 기반 핀테크 서비스 자바 개발자
+       - 웹 프로그래밍 기초(HTML,CSS,Javascript,jQuery,..)
+자바 - 백엔드 (JSP - MVC - 프레임워크(스프링))
+      - 안드로이드 앱 (모바일)
+데이터베이스
+핀테크 기초, 보안 구축
+
+1차 프로젝트(GIT)
+2차 프로젝트(GIT)
+
+설치
+1. 자바 프로그램 설치( JDK )
+2. 웹서버 설치
+3. 데이터베이스 서버 설치
+4. 개발도구 설치(통합개발툴)
+
+1. 자바 프로그램 설치( JDK  = 자바 개발 도구)
+java.sun.com
+https://www.oracle.com/java/technologies/
+
+오픈JDK 
+https://jdk.java.net/java-se-ri/11
+https://github.com/ojdkbuild/ojdkbuild
+=>
+java-11-openjdk-11.0.15.9-1.windows.ojdkbuild.x86_64.msi (sha256)
+
+설치확인
+실행 cmd
+java -version
+javac -version
+
+2. 웹서버 설치 => 아파치 톰캣 
+https://tomcat.apache.org/
+Download
+Tomcat 9
+apache-tomcat-9.0.65
+Port 8005, 8080
+
+서버 start
+내가 설치한 웹서버 주소
+웹브라우저 http://localhost:8080
+
+서버 stop
+C:\Program Files\Apache Software Foundation
+\Tomcat 9.0\bin
+Tomcat9w.exe => stop
+
+내가 설치한 웹서버 주소
+웹브라우저 http://localhost:8080
+
+서버 start
+C:\Program Files\Apache Software Foundation
+\Tomcat 9.0\bin
+Tomcat9w.exe => start
+
+내가 설치한 웹서버 주소
+웹브라우저 http://localhost:8080
+
+내가 만든 웹서버 안에 내가 만든 내용 위치
+C:\Program Files\Apache Software Foundation
+\Tomcat 9.0\webapps\ROOT
+
+웹브라우저 http://localhost:8080/index.jsp
+test1.html, test2.jsp -> 
+C:\Program Files\Apache Software Foundation
+\Tomcat 9.0\webapps\ROOT 
+복사해서 붙여넣기
+
+웹브라우저 http://localhost:8080/index.jsp
+               http://localhost:8080/test1.html
+               http://localhost:8080/test2.jsp
+	 http://192.168.2.200:8080/test2.jsp
+
+방화벽 해제
+Windows Defender 방화벽
+Windows Defender 방화벽 설정 또는 해제
+Windows Defender 방화벽 사용 안함
+Windows Defender 방화벽 사용 안함
+
+1. 사용자가 요청한 페이지 보여줌 => 웹서버(아파치)
+2. jsp페이지를 html페이지로 변경해서 보여줌
+=> 웹애플리케이션서버(톰캣)
+
+서버 stop
+C:\Program Files\Apache Software Foundation
+\Tomcat 9.0\bin
+Tomcat9w.exe => stop
+
+4. 개발도구 설치(통합개발툴)
+https://www.eclipse.org/downloads/
+https://www.eclipse.org/downloads/packages/
+Eclipse IDE for Enterprise Java and Web Developers
+Windows x86_64
+다운로드
+eclipse-jee-2022-09-R-win32-x86_64.zip
+c: 압축풀기
+작업공간
+d:workspace_jsp2 폴더만들기
+
+환경설정
+1. 한글처리
+Window - Preferences -
+General  - Workspace - UTF-8
+Web - CSS Files - Encoding - ISO UTF-8
+       - HTML Files - Encoding - ISO UTF-8
+       - JSP Files - Encoding - ISO UTF-8 
+          
+2. 웹서버  가져오기
+File - New -Other -
+Server - Server -Next
+- Apach - Tomcat v9.0 Server
+Next - 
+Name : Apache Tomcat v9.0
+directory : C:\Program Files\Apache Software Foundation\Tomcat 9.0
+Next - Finish
+
+3. 프로젝트 만들기
+File - New -Other -
+Web - Dynamic Web Project
+Next
+Project name : JspProject
+Dynamic web module version
+3.1
+Next -Next -
+체크 web.xml
+Finish
+
+4. 웹서버와 프로젝트 연결
+Servers 서버탭
+서버 - 오른쪽버튼 
+Add and Remove
+JspProject 선택  Add>
+Finish
+
+test1.html 파일 만들기
+프로젝트 
+src - main - webapp
+오른쪽 버튼 - New - Html file
+- test1.html - Next - Finish
+
+https://www.w3schools.com/
+
+
+----------------------------------------
+
+
+JSP
+동작원리 이해
+1. <%@ %> JSP,JAVA 페이지 설정
+   <%  %> JSP,JAVA 명령
+   <%= %> JSP,JAVA 내용 출력
+2. JSP 내장객체 request, response, session, (얘네 3개의 동작원리가 젤 중요. 얘네만 일단은 알면 됨)
+              application, pageContext, out,...
+3. JSP 액션태그 include, forward,..
+4. session, 쿠키
+5. 데이터베이스 연동
+6. 자바등장 => 회원가입, 로그인, 게시판,...
+
+사용자(클라이언트,유저) 브라우저 주소입력
+http://localhost:8080/JspProject/jsp1/testForm3.jsp
+
+http(Hyper Text Transfer Protocol) : 인터넷에서 html문서를 전송하는 프로토콜(통신규약)
+http가 요청정보를 서버에 전달 
+웹서버 : 요청페이지 찾아서 사용자에게 전달
+웹애플리케이션서버(WAS) : jsp => html 처리작업
+  1. request 내장객체 생성(기억장소 할당) : 요청정보를 저장
+     response 내장객체 생성 : 처리결과 저장
+  2. web.xml 참조 : 설정정보 저장
+  3. 처리담당자(서블릿) 지정되고 동작 
+    : 처리작업(프로그래머가 작업 명령을 내리고 처리담당자 실행-
+      request에 저장된 내용을 가져와서 출력) 
+처리결과 response에 저장
+웹서버에 처리결과 전달
+http에 처리결과 전달
+사용자에게 전달 => 화면 보여짐
+
+-----------------------------------
+cmd
+mysql -uroot -p1234 jspdb2
+
+데이터베이스 목록
+show databases;
+
+데이터베이스 만들기
+create database jspdb2;
+
+데이터베이스 선택 
+use jspdb2
+
+테이블 만들기 
+create table student(
+  num int primary key,
+  name varchar(10) 	
+);
+
+테이블 목록
+show tables;
+
+테이블 구조
+desc student;
+
+------------------------------------
+C:\Program Files (x86)\MySQL\Connector J 8.0
+mysql-connector-java-8.0.17.jar
+JDBC 프로그램 설치 : 자바와 데이터베이스(Mysql) 연결하는 프로그램
+
+이클립스 프로젝트 - src - main - webapp - WEB-INF -
+lib 폴더 mysql-connector-java-8.0.17.jar
+
+1단계 : JDBC 프로그램 가져오기
+2단계 : JDBC 프로그램 이용해서 데이터베이스 연결
+3단계 : sql구문을 만들고 실행할 준비
+4단계 : sql구문 실행 (insert,update,delete)
+       실행결과 저장(select)
+5단계 : 결과를 출력, 배열저장 (select)
+----------------------------------
+//회원가입
+// 아이디, 비밀번호, 이름, 가입날짜
+// 생년월일, 성별, 이메일, 휴대전화
+
+cmd 접속
+mysql -uroot -p1234 jspdb2
+
+create table members(
+  id varchar(20) primary key,
+  pass varchar(20),
+  name varchar(20),
+  date datetime
+);
+
+desc members;
+--------------------------------
+게시판
+https://www.ppomppu.co.kr
+글번호 글쓴이(아이디) 제목 글내용 등록일 조회수
+추천 분류 첨부파일 ip
+
+cmd 접속
+mysql -uroot -p1234 jspdb2
+
+create table board(
+  num int primary key,
+  name varchar(20),
+  subject varchar(50), 	
+  content varchar(100),
+  readcount int,
+  date datetime
+);
+
+desc board;
+
+---------------------------------
+1. jsp 디비연결
+insertForm.jsp(화면) => insertPro.js(처리,디비)
+(request,getParameter), DB작업(DB에 insert))
+=> loginForm.jsp(화면) => loginPro.jsp(처리, DB작업)
+
+
+// DB연결 자바 메서드 정의해서 반복 최소화, 수정 최소화
+2. java 디비연결
+insertForm.jsp(화면) => insertPro.java(처리) <=> DAO(디비)
+=> loginForm.jsp(화면) => loginPro.java(처리) <=> DAO(디비)
+
+
+// DB연결 자바 메서드 정의해서 반복 최소화, 수정 최소화
+// 여러명이 작업을 분리해서 수행할 수 있게 프로그램 방식(패턴) 적용
+// 보안상 좋은 방식(주소줄에서 실제 주소가 안보임)
+3. java 메서드 => 처리, 디비작업
+insertForm.jsp(화면) => insertPro.jsp(처리) <=> DAO(디비)
+=> loginForm.jsp(화면) => loginPro.java(처리) <=> DAO(디비)
+
+
+// 가상주소를 이용해서 페이지 이동
+// 주소Mapping:(가상주소) --> 실제페이지 연결
+insertForm.me(가상주소)  --> 실제페이지 연결 insertForm.jsp(화면)
+=> insertPro.me(가상주소)	--> 실제페이지 연결 insertPro.java(처리) <=> DAO(디비)
+=> insertForm.me(가상주소) --> 실제페이지 연결 loginForm.jsp(화면)
+=> loginPro.me(가상주소) --> 실제페이지 연결 <=> DAO(디비)
+=> Main.me(가상주소) -->실제페이지 연결 main.jsp(화면)
+
+ 
+< MVC방식(패턴), (= 모델2) >
+Model : 디비작업 DAO.DTO(=반복을 피하기 위한 디비연동)
+View : 화면 jsp(=form, jsp파일)
+Controller : java 파일로 처리 작업(=pro파일)
+
+시작점 가상주소
+웹브라우저 가상주소 http://localhost:8080/Model2/insertForm.me
+http : html문서를 전송하는 프로토콜(통신규약)
+http가 요청정보를 서버에 전달 
+웹서버 : 요청페이지 찾아서 사용자에게 전달
+웹애플리케이션서버(WAS) : 가상주소=>jsp,java=>html 처리작업
+  1. request 내장객체 생성(기억장소 할당) : 요청정보를 저장
+     response 내장객체 생성 : 처리결과 저장
+  2. web.xml 참조 : 설정정보 저장
+  (가상주소를 실제파일 연결하는 파일경로 => 처리담당자(서블릿) 파일)
+  3. 처리담당자(서블릿) 지정되고 동작(주소 매핑) 
+    : 처리작업(프로그래머가 작업 명령을 내리고 처리담당자 실행-
+      request에 저장된 내용을 가져와서 출력) 
+처리결과 response에 저장
+웹서버에 처리결과 전달
+http에 처리결과 전달
+사용자에게 전달 => 화면 보여짐
+
+게시판
+웹브라우저 
+가상주소 http://localhost:8080/Model2/BoardWriteForm.bo
+
+
+//추가 email, address, phone, mobile
+
+cmd 접속
+mysql -uroot -p1234 jspdb2
+
+alter table members
+add email varchar(30);
+
+alter table members
+add address varchar(50);
+
+alter table members
+add phone varchar(30);
+
+alter table members
+add mobile varchar(30);
+
+
+------fnotice 첨부파일 게시판--------
+//추가 file
+
+cmd 
+mysql -uroot -p1234
+
+alter table board
+add file varchar(100);
+
+
+
+--------------------------------------
+<Github>
+
+형상관리
+git 제공하는 사이트
+https://github.com/
+
+
+<저장소-repository 만들기>
+New
+repository name: gitTest20221229
+create repository
+
+
+<저장소 주소>
+https://github.com/Na-kyeong-lee/gitTest20221229.git
+아이디
+비밀번호 => 토큰을 만들어서 대신 사용함
+☆<내 토큰> - 비밀번호 대신 사용할거임☆
+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
+
+
+<토큰 만드는 루트>
+본인프로필사진 클릭 - settings 클릭 - Developer settings
+ - Personal access tokens - tokens(classic) - 
+Generate new token - new token(classic) 클릭
+
+
+<토큰 만드는 법>
+note ->  token 입력
+Expiration -> No Expiration 선택
+모든항목 선택함
+Generate token 클릭
+
+
+
+
+<깃허브 명령어>
+- commit : 작업단위로 내 컴퓨터의 git공간에 기록(저장)하는 명령어
+
+- push : 저장소(미국 hithub 사이트 git공간)에 기록 /작업(commit)하다가 
+전부 다 저장소(깃허브의 서버)로 저장할 때 사용하는 명령어
+
+- pull : 수정된 내용만 github저장소에서 가져오기
+작업하고자 하는 부분만 가져올 때 사용하는 명령어
+
+- clone(복제) : github 저장소 내용 전체 가져오기
+
+
+
+<git 워크스페이스와 내 컴퓨터를 동기화 시켜주기>
+project에 오른쪽 버튼 클릭 - Team - Share Project - Create
+- D:\Shared\JSP\workspace_git2 - finish
+
+
+project에 오른쪽 버튼 클릭 - Team - commit
+
+project에 오른쪽 버튼 클릭 - Team - push branch master
+
+URI에 https://github.com/Na-kyeong-lee/gitTest20221229.git 입력
+- 아이디 입력 - 비밀번호에 토큰 입력
+
+project - 오른쪽 버튼 - Team - pull
+
+
+(branch 만들어주기)
+project에 오른쪽 버튼 클릭 - Team - switch to - new branch
+branch : branch - finish
+
+-------------------------------------
+
+<깃허브에 팀원 초대>
+※팀장※
+팀프로젝트 저장소 만들고 프로젝트 틀 올리기
+팀원 초대
+settings
+collaborators
+Add people
+
+※팀원※
+복제(clone)
+git 환경
+clone(복제)
+URI https://github.com/Na-kyeong-lee/gitTest20221229.git
+Next
+Next
+디렉토리 : workspace_jsp2 작업공간 선택
+체크 import all existing Eclipse projects after clone finishes
+Finish
+아이디
+비밀번호
+
+
+
+

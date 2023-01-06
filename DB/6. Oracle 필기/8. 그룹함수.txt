@@ -1,0 +1,32 @@
+<그룹함수>
+- 행 그룹을 조작해서 하나의 결과값을 반환함.
+- 그룹함수 종류 : min, max, sum, avg, count
+- 그룹함수 특징 : null값은 제외하고 작업함!
+
+[count 함수]
+- count(*) : null O, 중복값 O
+- count(expr1) : null X, 중복값 O
+- count(distinct expr1) : null X, 중복값 X
+
+select count(*)
+from employees
+where department_id = 80;
+=> 80번 부서에 소속된 사원의 수를 출력하시오.
+
+select count(commission_pct)
+from employees
+where department_id = 80;
+=> 80번 부서에 소속된 사원 중 커미션을 받는 사원의 수를 출력하시오.
+
+[avg 함수]
+(예제) employees 테이블로부터 전체 사원의 커미션 평균을 출력하시오.
+[결과] avg_comm
+     ---------
+       OOOOO
+[오답] select avg(commission_pct) as avg_comm
+      from employees; 
+=> 커미션을 받는 사원들의 커미션 평균!
+
+[정답] select avg(nvl(commission_pct, 0)) as avg_comm
+      from employees;
+=> 전체 사원들의 커미션 평균! 

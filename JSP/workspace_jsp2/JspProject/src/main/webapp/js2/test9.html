@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js2/test9.html</title>
+<script type="text/javascript">
+function check2() {
+//  필수 제어 => 전송
+
+	if(document.getElementById("id2").value==""){
+// 		alert("아이디 입력하세요");
+		document.getElementById("div2").innerHTML="아이디 입력하세요";
+		document.getElementById("id2").focus();
+		return false;
+	}
+
+	if(document.getElementById("pass2").value==""){
+// 		alert("비밀번호 입력하세요");
+document.getElementById("div2").innerHTML="비밀번호 입력하세요";
+		document.getElementById("pass2").focus();
+		return false;
+	}
+	if(document.getElementById("name2").value==""){
+// 		alert("이름 입력하세요");
+document.getElementById("div2").innerHTML="이름 입력하세요";
+		document.getElementById("name2").focus();
+		return false;
+	}
+	var gender0=document.getElementById("gender1").checked;
+	var gender1=document.getElementById("gender2").checked;
+	if(gender0==false && gender1==false){
+// 		alert("성별 선택하세요");
+document.getElementById("div2").innerHTML="성별 선택하세요";
+		return false;
+	}
+	var hobby0=document.getElementById("hobby1").checked;
+	var hobby1=document.getElementById("hobby2").checked;
+	var hobby2=document.getElementById("hobby3").checked;
+	if(hobby0==false && hobby1==false && hobby2==false){
+// 		alert("취미 선택하세요");
+document.getElementById("div2").innerHTML="취미 선택하세요";
+		return false;
+	}
+	if(document.getElementById("grade2").value==""){
+// 		alert("등급 선택하세요");
+document.getElementById("div2").innerHTML="등급 선택하세요";
+		document.getElementById("grade2").focus();
+		return false;
+	}
+	if(document.getElementById("intro2").value==""){
+// 		alert("자기소개 입력하세요");
+document.getElementById("div2").innerHTML="자기소개 입력하세요";
+		document.getElementById("intro2").focus();
+		return false;
+	}
+// 	document.fr.submit();
+}
+</script>
+</head>
+<body>
+<div id="div2"></div>
+<form action="a.jsp" method="get" name="fr" onsubmit="return check2()">
+아이디 : <input type="text" name="id" id="id2"><br>
+비밀번호 : <input type="password" name="pass" id="pass2"><br>
+이름 : <input type="text" name="name" id="name2"><br>
+성별 : <input type="radio" name="gender" value="남" id="gender1">남자
+<input type="radio" name="gender" value="여" id="gender2">여자<br>
+취미 : <input type="checkbox" name="hobby" value="여행" id="hobby1">여행
+<input type="checkbox" name="hobby" value="게임" id="hobby2">게임
+<input type="checkbox" name="hobby" value="운동" id="hobby3">운동<br>
+등급 : <select name="grade" id="grade2">
+	<option value="">등급 선택하세요</option>
+	<option value="1">1등급</option>
+	<option value="2">2등급</option>
+	<option value="3">3등급</option>
+</select><br>
+자기소개 : <textarea name="intro" rows="5" cols="10" id="intro2"></textarea><br>
+<input type="submit" value="회원가입"><br>
+</form>
+</body>
+</html>

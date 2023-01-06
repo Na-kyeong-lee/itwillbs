@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS basic</title>
+<link href="basic.css" rel="stylesheet">
+<style type="text/css">
+ body {font-size:15px;
+       color: #333; } 
+
+ h2 {color: #035; } 
+
+ ul {border: 1px solid #035;
+  padding: 1em; 
+  line-height: 1.8;  }
+ 
+  #pg-t {text-align: center;
+   text-decoration: underline;
+   text-transform: capitalize; 
+   color: #035;  }
+  
+  #int {color: #090;}
+   
+  .bigbld {background-color:#ccc;  
+           font-size: 17px;
+           font-weight: bold;  } 
+	           
+  .pre {white-space:pre;}         
+</style>
+</head>
+<body>
+<h1 id="pg-t">CSS basic</h1>
+<h2>CSS구문</h2>
+<p class="bigbld pre" style="width: 200px;height: 100px;"> 
+  선택자  {
+         속성:속성값;      
+       }
+</p>
+<h2>CSS 적용방식 3가지</h2>
+ <ul>
+  <li><span class="bigbld">External방식</span>
+   - html문서와 별개의 외부파일(*.css)에 스타일소스를 적용하고 연결시킴.<br>
+    <span class="bold bwn">
+    html문서안의 head내에 &lt;link href="*.css" rel="stylesheet"&gt;</span>
+    <br>
+    유지보수에 유리하며 통일된 스타일로 사이트 구축 가능.     
+    </li>
+  <li id="int"><span class="bigbld">Internal방식</span> - html문서안의 head내에 스타일소스를 적용. <br> 
+  <span class="bold bwn">&lt;style type="text/css"&gt; 
+      <!-- ... --> ...
+   &lt;/style&gt; </span>  
+   해당 html문서에만 스타일이 적용 됨. </li>
+  <li style="color:#f00;">
+   <span class="bigbld">Inline방식</span> - tag 뒤에 바로 스타일소스를 적용.
+  <span class="bwn bold">&lt;tag style="속성:속성값;"&gt;</span> <br>
+   소스가 길어지고 유지보수에 불리하며 통일된 스타일로 사이트 구축이 불가능.<br>
+   우선 순위가 가장 높음. 본문(body)만 수정 가능한 작업환경일 때 사용</li>
+ </ul>
+
+<h2>CSS선택자 대표 3가지</h2>
+ <ul>
+  <li><span class="bigbld">tag선택자</span> - tag명 그대로 선택자로 활용.<br>
+  자동 적용, 강제 적용</li>
+  <li><span class="bigbld">id선택자</span> - tag 뒤에 id를 추가하여 선택자(#id값)로 활용.<br>
+     한번만 적용됨. 주로 구조적인 용도로 쓰임 </li>
+  <li><span class="bigbld">class선택자</span> - tag 뒤에 class를 추가하여 선택자(.class값)로 활용.<br>
+     중복 적용 가능, class끼리 조합 가능. 주로 디자인적인 용도로 쓰임 </li>
+ </ul>
+
+
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,34 @@
+<테이블 수정>
+1. alter table 테이블명 add ---;
+- 컬럼 추가
+- 제약조건 추가
+
+2. alter table 테이블명 modify ---;
+- 컬럼 수정(데이터타입, 컬럼사이즈, default값 등)
+- 제약조건 추가
+
+3. alter table 테이블명 drop ---;
+- 컬럼 삭제
+- 제약조건 삭제
+
+4. alter table 테이블명 rename ---;
+- 컬럼명 수정 =>  alter table 테이블명
+                        rename column 기존컬럼명 to 새컬럼명;
+- 제약조건명 수정 => alter table 테이블명
+		    rename constraint 기존제약조건명  to 새제약조건명;
+
+<테이블 생성 후 제약조건 추가>
+1. 테이블 레벨 문법 : PK, FK, UK, CK
+alter table 테이블명
+add constraint 제약조건명 제약조건유형(컬럼명);
+
+2. 컬럼 레벨 문법 : NN, PK, FK, UK, CK
+alter table 테이블명
+modify 컬럼명 constraint 제약조건명 제약조건유형;
+
+
+
+
+
+
+

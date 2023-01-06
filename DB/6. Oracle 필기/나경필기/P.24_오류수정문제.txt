@@ -1,0 +1,13 @@
+(p.24 오류쿼리 수정)
+select department_id, count(last_name)
+from employees
+group by department_id;
+
+select department_id, job_id, count(last_name)
+from employees
+group by department_id, job_id;
+
+
+(p.24 Having절)
+where절 : 행 제한 조건문
+having절 : 행그룹 제한 조건문 (그룹함수가 포함된 조건문)

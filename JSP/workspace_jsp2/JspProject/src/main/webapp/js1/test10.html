@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js1/test10.html</title>
+<script type="text/javascript">
+//window-document내장객체 - html,body 틀 정보를 저장하는 객체
+// document.변수 document.title, document.bgColor
+// document.함수() document.writeln(), document.open()
+function fun1() {
+	alert(document.title);
+}
+function fun2() {
+	document.title="문서제목";
+}
+function fun3() {
+	document.bgColor="yellow";
+}
+function fun4(c) {
+	//문서 배경색 변경
+	alert(c);
+	document.bgColor=c;
+}
+// document.함수() html문서내에 글쓰기
+document.writeln("문서내용<br>");
+</script>
+</head>
+<body>
+<input type="button" value="문서정보버튼" onclick="fun1()">
+<input type="button" value="문서제목변경" onclick="fun2()">
+<input type="button" value="배경색변경" onclick="fun3()">
+<input type="radio" name="ra" value="pink" onclick="fun4('pink')">pink
+<input type="radio" name="ra" value="skyblue" onclick="fun4('skyblue')">skyblue
+<input type="radio" name="ra" value="green" onclick="fun4('green')">green
+</body>
+</html>

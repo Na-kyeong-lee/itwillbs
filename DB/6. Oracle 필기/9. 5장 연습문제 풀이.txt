@@ -1,0 +1,16 @@
+(5장 연습문제)
+1. 
+SELECT job_id, MAX(salary) "Maximum",
+               MIN(salary) "Minimum",
+               SUM(salary) "Sum",
+               ROUND(AVG(salary),0) "Average"
+FROM employees 
+GROUP BY job_id;
+
+2. 
+SELECT manager_id, MIN(salary)
+FROM employees
+WHERE manager_id IS NOT NULL
+GROUP BY manager_id
+HAVING MIN(salary) >= 6000 
+ORDER BY MIN(salary) DESC;

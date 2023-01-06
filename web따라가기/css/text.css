@@ -1,0 +1,204 @@
+@charset "UTF-8";
+
+ /* 1. text-align 글자 수평 정렬 */
+ 
+/*
+ .ta01, .ta02, .ta03, .ta04 {
+ A, B, C, ... 등 여러 요소를
+ 그룹선택자로 
+ 불러와 동시에 같은 스타일을 적용
+ border: 1px solid #f00;
+ width: 500px;
+}
+ */
+#sec01>p {/* 1. 관계선택자 A>B는
+ 상위요소A의 바로 아래에 있는 하위요소B를
+ 불러오는(부모자식 관계) 선택자  */
+ border: 1px solid #f00; 
+ width: 500px;	}
+ 
+ #sec01 label {/* 2. 관계선택자 A B는
+ 상위요소A의 아래에 있는 하위요소B를
+ 불러오는(조상자손 관계) 선택자 */   
+ font-weight: bold;
+  color: #079;}
+ 
+.ta01 {text-align: left;}
+.ta02 {text-align: center;}
+.ta03 {text-align: right;}
+.ta04 {text-align: justify;}
+
+
+ /* 2. text-decoration 글자 줄들 */
+.td01 {text-decoration: overline;}
+
+.td02 {text-decoration: line-through;}
+
+.td03 {text-decoration: underline;}
+
+.spr {font-size: 14px; 	
+ text-decoration: line-through;
+ color: #555;}
+
+#sec02>p>b {font-size:24px;
+	color: #f00;}
+
+.sale {border: 3px dotted;
+background-color: #f00;
+border-radius:50% /* 모서리라운딩 */;
+padding:2px 4px;
+vertical-align: super /* 윗첨자위치 */;
+font-size:12px;
+font-weight:bold;
+font-style:italic; 
+text-transform:capitalize; 
+color: #ff0;}
+
+
+.td04>a {
+text-decoration:none; }
+
+.td04>a:hover {
+text-decoration:underline;}
+
+
+ /* 3. text-indent 들여쓰기 */
+ 
+ #sec03>p {border: 1px solid #900; }
+ 
+ .tin01 {text-indent: 16px;}
+ 
+.tin02 {text-indent: 2em;}
+ 
+.tin03 {text-indent: 10%;}
+ 
+.tin04 {text-indent: -100px;
+ overflow: hidden; } 
+
+.tin04:hover {
+	text-indent:0; } 
+ 
+ 
+/* 4. text-transform 
+  대소문자 변경 */
+ 
+.ttr01 {text-transform: none;} 
+.ttr02 {text-transform: uppercase;} 
+.ttr03 {text-transform: lowercase;}  
+.ttr04 {text-transform: capitalize;} 
+ 
+ 
+ 
+  /* 5. text-shadow: ; 글자 그림자 */
+ 
+ #sec05>p {
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center; }
+ 
+.tsh01 {
+text-shadow: 2px 3px 4px #333;} 
+.tsh02 {
+text-shadow: -2px -3px 4px #333;}
+
+.tsh03 {
+text-shadow:0 0 2px #833;
+color: #fff; }
+
+.tsh04 {
+color: #fff; }
+
+.tsh04:hover {
+ text-shadow: 3px 4px 6px #000;
+ transition:1.2s;}
+
+.tsh05 {background-color: #000;
+padding: 20px;
+text-shadow: 0 0 34px #2f4;}
+
+.tsh05:hover {
+text-shadow: 0 0 0 #000;	
+transition:1.2s;}
+
+.tsh06 {
+background-color: #000;
+padding: 20px;
+text-shadow: 2px 2px 6px #f30, -2px -2px 6px #03f;}
+
+.pre {white-space: pre;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

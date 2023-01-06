@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js1/test7.html</title>
+<script type="text/javascript">
+//3. 객체 => 내장객체 => 문자, 날짜, .., 웹브라우저 내장객체
+// 웹브라우저 내장객체
+// window - location 
+//        - history
+//        - document - image, ...
+//                   - form - text, password,textarea
+//                          - radio, checkbox
+//                          - select
+
+// window 내장객체 => 정보저장하는 변수, 창열고 닫기 기능하는 함수
+// window.변수   
+// window.함수()  window.open(), window.close()
+function fun1() {
+// 	alert("클릭");
+// 	window.open("열릴페이지,사이트","창이름","창크기,창위치");
+	window.open("http://www.naver.com","wname","width=300,height=200");
+}
+function fun2() {
+window.open("test1.html","w","width=500,height=300,left=200,top=200");
+}
+function fun3() {
+	window.close();
+}
+function fun4() {
+	// test7_1.html 페이지 만들고 내용은 창닫기 버튼
+	// test7_1.html 창열기
+	window.open("test7_1.html","","width=300,height=200");
+}
+</script>
+</head>
+<body>
+<input type="button" value="창열기" onclick="fun1()">
+<input type="button" value="창열기2" onclick="fun2()">
+<input type="button" value="창닫기" onclick="fun3()">
+<input type="button" value="창열고닫기" onclick="fun4()">
+</body>
+</html>
+

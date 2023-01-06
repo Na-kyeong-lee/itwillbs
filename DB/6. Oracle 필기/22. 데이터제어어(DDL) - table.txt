@@ -1,0 +1,52 @@
+<데이터 정의어(DDL) - Table>
+1. create table(테이블 생성)
+- 데이터 모델링: 요구사항 수집/분석 -> 개념모델링(ERD) 
+	     -> 논리 모델링(구체화된 ERD, IE표기법, 테이블 차트) -> 물리 모델링
+- 필요한 사항: 테이블명,컬럼명,데이터타입,컬럼사이즈
+- 옵션: default값,제약조건
+- 제약조건 유형: not null, unique, primary key, foreign key, check
+(오라클에서는 제약조건명으로 오류메세지를 보여주므로, 의미있고 고유하게 제약조건을 줘야 오류메세지를 봤을 때 어떤 곳에서 오류가 났는지를 바로 알 수 있다.)
+
+
+2. alter table(테이블 수정)
+- alter table 테이블명 add---; :컬럼 추가,제약조건 추가(table level의 문법)
+
+- alter table 테이블명 modify---; : 컬럼 수정(데이터타입, 컬럼사이즈, default값)
+				, 제약조건 추가(column level문법)
+
+- alter table 테이블명 drop---; : 컬럼 삭제, 제약조건 삭제
+
+- alter table 테이블명 rename---; : 컬럼명 변경, 제약조건명 변경
+
+[참고] 테이블명 변경 : SQL> rename 기존테이블명 to 새테이블명;
+
+
+3. drop table(테이블 삭제)
+- 테이블 삭제
+ SQL> drop table emp2;
+- 삭제된 테이블 휴지통에서 확인 : 
+ [방법1]SQL> show recyclebin
+ [방법2]SQL> select original_name, operation, droptime
+	    from recyclebin;
+- 휴지통의 테이블 되살리기 : 
+ SQL> flashback table 테이블명 to before drop;
+
+
+
+4. truncate table(테이블 절단)
+- 테이블 절단(테이블의 모든 행 삭제, 테이블 구조 남음)
+ SQL> truncate table 테이블명; (==) SQL> delete from 테이블명;
+      - DDL(데이터정의어)			- DML(데이터제어어)
+      - rollback X			- rollback O
+      - 개념: 테이블 모든행 삭제 명령어		- 개념: 테이블의 특정행 삭제 명렁어
+					       (where절 생략 시 모든 행 삭제되기도 함)
+
+
+
+
+
+
+
+
+
+

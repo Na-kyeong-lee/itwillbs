@@ -1,0 +1,265 @@
+﻿<html>
+ <head>
+  <title>form-1</title>
+ </head>
+ <body>
+<h2>form-1</h1>
+<form action="test.jsp" method="post">
+ <h2>&lt;label&gt; ... &lt;/label&gt;</h2>
+ <p>input에 대한 설명문의 역할을 하는 태그 = label <br>
+  input에는 id속성의 값을,
+  label에는 for속성의 값을 서로 일치시켜 연결해 줌.</p>
+<hr>
+ <h1>input type="..."의 값들(폼요소)</h1>
+ <h2>1. input type="text" 주관식. 한 줄 글상자</h2>
+ <p>
+  속성 maxlength="n"로 n자 입력가능하게 최대치를, <br>
+  size="n"로 n자 만큼의 상자 가로 길이를 지정할 수 있음 
+ </p>
+ <label for="nm">name</label> 
+ <input type="text" id="nm" size="14"><br>
+ <label for="id">id</label> 
+  <input type="text" id="id" maxlength="8">
+
+ <h2>2. input type="password" 주관식. 암호 글상자</h2>
+ <label for="pw">password</label> 
+  <input type="password" id="pw" maxlength="12">
+
+ <h2>3. input type="radio" 객관식. 단일선택형 라디오버튼</h2>
+  <p>단일선택이 되려면 선택지끼리 name="..."의 값을 서로 일치시켜줌, <br>
+   초기값으로 지정할 선택지에는 checked (checked="checked")를 추가.</p>
+
+  <p>등원시 소요시간은? <br>
+   <input type="radio" id="m10" name="wm"> 
+    <label for="m10">10분 이내</label>
+   <label> <input type="radio" name="wm" checked="checked"> 30분 이내 </label>
+   <label> <input type="radio" name="wm"> 1시간 이내 </label>
+   <label> <input type="radio" name="wm"> 1시간 이상 </label>
+  </p>
+
+ <h2>4. input type="checkbox" 객관식. 다중선택형 체크박스</h2>
+ <p>초기값으로 지정할 선택지에는 checked (checked="checked")를 추가.</p>
+ <p>등원시 이용하는 교통수단은? <br>
+  <label> <input type="checkbox" checked> 도보</label>
+  <label> <input type="checkbox"> 자전거</label>
+  <label> <input type="checkbox" checked="checked"> 대중교통</label>
+  <label> <input type="checkbox"> 자가용</label>
+ </p>
+
+ <h2>5. textarea ... /textarea  주관식. 큰 글상자</h2>
+ <p>
+  속성 cols로 n자 입력가능한 가로를, <br>
+  rows로 n줄 세로 길이를 지정할 수 있음 </p>
+ <textarea cols="50" rows="6">
+  지원동기를 적으세요
+ </textarea>
+
+ <h2>6. select ... /select 공간절약형 객관식. 펼침목록(드롭다운리스트)</h2>
+  <p>
+   select로 전체 선택지를 묶어주고<br>
+   option으로 실제 선택지를 추가함.<br>
+   초기값으로 지정할 선택지에는 selected (selected="selected")를 추가.<br>
+   다중선택 되려면 select에 multiple(multiple="multiple")를 추가.<br>
+   상자형으로 바꾸려면 select에 size="n"를 추가.<br>
+   여러 option들을 묶어서 그룹화하려면 optgroup으로 묶어주고<br>
+   해당 optgroup의 주제나 제목 등은 label="..."로 나타냄
+  </p>
+
+ <p>상담 가능한 시간은? <br>
+  <select>
+   <option>1교시</option>
+   <option>2교시</option>
+   <option>3교시</option>
+   <option>4교시</option>
+   <option>5교시</option>
+   <option>6교시</option>
+   <option>7교시</option>
+   <option>8교시</option>
+   <option>수업이후</option>
+  </select>
+ </p>
+
+ <p>상담 가능한 시간은?(초기값 지정 = selected) <br>
+  <select>
+   <option>1교시</option>
+   <option>2교시</option>
+   <option>3교시</option>
+   <option>4교시</option>
+   <option selected>5교시</option>
+   <option>6교시</option>
+   <option>7교시</option>
+   <option>8교시</option>
+   <option>수업이후</option>
+  </select>
+ </p>
+
+ <p>상담 가능한 시간은?(2가지 이상 선택 가능 = multiple) <br>
+  <select multiple>
+   <option selected>1교시</option>
+   <option>2교시</option>
+   <option selected>3교시</option>
+   <option>4교시</option>
+   <option>5교시</option>
+   <option>6교시</option>
+   <option>7교시</option>
+   <option>8교시</option>
+   <option>수업이후</option>
+  </select>
+ </p>
+
+ <p>팀회의 희망 시간은? (상자형은 size="n")<br>
+  <select size="5">
+   <option>1교시</option>
+   <option>2교시</option>
+   <option>3교시</option>
+   <option selected>4교시</option>
+   <option>점심시간</option>
+   <option>5교시</option>
+   <option>6교시</option>
+   <option>7교시</option>
+   <option>8교시</option>
+   <option>수업이후</option>
+  </select>
+ </p>
+
+
+ <p>현재 거주지는? (그룹화하는 optgroup) <br>
+  <select size="4">
+   <optgroup label="부산진구">
+    <option selected>부전동</option>
+    <option>전포동</option>
+    <option>개금동</option>
+    <option>가야동</option>
+   </optgroup>
+   <optgroup label="남구">
+    <option>감만동</option>
+    <option>대연동</option>
+    <option>남천동</option>
+    <option>문현동</option>
+   </optgroup>
+  </select>
+ </p>
+
+<hr>
+ <h2>7. input type="submit/reset/button" 전송/취소/일반 버튼</h2>
+ <p>
+  <input type="submit" value="전송">
+  <input type="reset" value="취소"> <br>
+  <input type="button" onclick="alert('Why~~~~?')" value="Button">
+ </p>
+
+ <h2>8. button ... /button 전송 버튼(취소/일반은 type의 값을 추가)</h2>
+  <button>전송</button>
+  <button type="reset">취소</button> <br>
+  <button type="button">
+   <img src="face.gif"> 
+   일반 <b>버튼</b></button>
+
+ <h2>9. input type="image" 전송용 이미지</h2>
+  <p>src속성으로 이미지 경로 지정 </p>
+  <input type="image" src="login.png" width="50">
+
+ <h2>10. input type="file" 파일 전송용</h2>
+  <label for="f">Photo</label> <input type="file" id="f">
+
+ <h2>11. input type="hidden" 숨은 정보 전송용</h2>
+  <input type="hidden" value="vip">
+  
+</form> 
+<hr>
+<form action="test1.jsp" method="POST"> 
+ <h1>html5에서 추가된 input type 값들</h1>
+
+ <h2>1. input type="time" 시간(오전/오후 시 분)을 지정하는 폼요소</h2> 
+  <label>예약시간은 <input type="time"> </label>
+
+ <h2>2. input type="date" 날짜(년/월/일)를 지정하는 폼요소</h2> 
+  <label>이번 송년회는 <input type="date"> </label> 입니다 <br>
+  <input type="date" min="1900-01-01" max="2100-12-31">
+   (min="nnnn-nn-nn" max="nnnn-nn-nn" 로 입력값의 최소나 최대 지정 가능)
+
+ <h2>3. input type="datetime-local"
+   날짜와 시간(년/월/일 오전/오후 시 분)을 지정하는 폼요소 </h2> 
+  <input type="datetime-local">
+
+ <h2>4. input type="week" 날짜(년 주) 지정하는 폼요소 </h2> 
+  <input type="week">
+
+ <h2>5. input type="month" 날짜(년 월) 지정하는 폼요소 </h2> 
+  <input type="month">
+
+ <h2>6. input type="number" 숫자값을 지정하는 폼요소(증감버튼)</h2> 
+  <input type="number"> <br>
+  <input type="number" step="4"> (step="n"으로 증감 간격 지정) <br>
+  <input type="number" min="0" max="1000"> (min="n" max="n"
+  로 입력값의 최소나 최대 지정 가능) <br>
+
+ <h2>7. input type="range" 범위내의 값을 지정하는 폼요소</h2> 
+  <input type="range">  <br>
+  <input type="range" min="0" max="100" step="5">
+  (step="n"으로 증감 간격 지정, min="n" max="n"로 최소나 최대 지정 가능)
+
+ <h2>8. input type="tel" 연락처(전화번호)를 지정하는 폼요소</h2> 
+  <input type="tel"> 모바일브라우저에서는 가상키패드가 숫자형식으로 바뀔 수 있고,
+     전화걸기 가능
+
+ <h2>9. input type="email" 연락처(이메일)를 지정하는 폼요소</h2> 
+<input type="email"> 전송시에 브라우저가 알맞은 형식(@유무, @이후 완성)인지 체크해 줌 
+
+ <h2>10. input type="url" 연락처(웹주소)를 지정하는 폼요소</h2> 
+  <input type="url"> 전송시에 브라우저가 알맞은 형식(프로토콜 유무 등)인지 체크해 줌
+
+ <h2>11. input type="color" 색상값을(선택) 지정하는 폼요소</h2> 
+  <input type="color">
+
+ <h2>12. input type="search" 검색용 폼요소</h2> 
+  <input type="search"> 삭제버튼이 상자 끝에 추가 됨
+
+ <!-- eclipse압축파일을 받아 D드라이브의 web방안에 압축해제하기 -->
+ <hr>
+ <h1>html5에서 추가된 input type의 속성들</h1>
+ <h2>1. autofocus (autofocus="autofocus") 자동포커싱. 해당 요소가 대기상태</h2>
+ <input type="text" autofocus> 
+
+ <h2>2. autocomplete="on/off"  자동완성 기능을 켜거나 끔</h2>
+ <label for="name">name</label> 
+  <input type="text" id="name" autocomplete="off">
+
+ <h2>3. placeholder="***" 입력 예시나 설명 등을 추가</h2>
+ <input type="text" placeholder="숫자영문조합으로 6~8자"> <br>
+ <input type="tel" placeholder="010-7777-8888">
+
+ <h2>4. required(required="required") 필수입력요소로 지정</h2>
+ <input type="text" required>
+
+ <h2>5. readonly (readonly="readonly") 읽기만 가능한 입력요소로 지정</h2>
+  <p>클릭, 복사할 수 있고 제출할 때 전송 됨</p>
+ <input type="text" value="2조" readonly>
+
+ <h2>6. disabled (disabled="disabled") 사용불가한 입력요소로 지정</h2>
+  <p>비활성화. 클릭, 복사할 수 없고 제출할 때 전송되지 않음</p>
+ <input type="text" value="2조 조장" disabled>
+
+<hr>
+ <button>ok</button>  <button type="reset">no</button> 
+
+ <hr>
+ <h1>&lt;fieldset&gt; ... &lt;/fieldset&gt; 폼요소들을 그룹화하기 </h1>
+ <p>서로 관련 있는 폼요소들끼리 묶어서 나타냄.<br>
+  해당 fieldset의 제목(주제)는 &lt;legend&gt; ... &lt;/legend&gt;로 지정.
+ </p>
+
+ <fieldset>
+  <legend>Search</legend>
+  <input type="search"> 
+  <input type="submit"> 
+ </fieldset>
+
+</form>
+
+ </body>
+</html>
+
+
+
+

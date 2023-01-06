@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>background</title>
+<link href="style.css" rel="stylesheet">
+<link href="bgimg.css" rel="stylesheet">
+</head>
+<body>
+<h1>background 배경</h1>
+<ol>
+ <li>background-color: ; 배경색상</li>
+ <li>background-image:url("경로"); 배경이미지</li>
+ <li>배경이미지 2개 적용하려면 url("경로A"), url("경로B") <br>
+  식으로 , 를 추가하며 나머지 속성들도 값을 , 로 추가함
+ </li> 
+</ol>
+
+<hr>
+<h2>background-image의 속성들</h2>
+<ul>
+ <li>background-repeat: ; 반복 지정
+  <ul>
+   <li>repeat 기본값. 양사방 반복</li>
+   <li>repeat-x 가로로만 반복</li>
+   <li>repeat-y 세로로만 반복</li>
+   <li>no-repeat 반복 안함</li>
+  </ul> 
+ </li>
+ <li>background-size: ; 크기 지정
+  <ul>
+   <li>contain 이미지를 가로나 세로에 최대한 맞추기
+    (이미지가 잘려나가지 않음) </li>
+   <li>cover 이미지 하나로 전체 다 덮기
+    (이미지가 잘려나갈 수 있음)</li>
+   <li>n n 가로 세로의 순으로 직접 지정</li>
+  </ul>
+ </li>
+ <li>background-position: ; 위치 지정
+  <ul>
+   <li>left/center/right top/center/bottom</li>
+   <li>n n 가로 세로의 순으로 직접 지정</li> 
+  </ul> 
+ </li>
+ <li>background-attachment: ; 스크롤 여부 지정
+  <ul>
+   <li>scroll</li>
+   <li>fixed</li>
+   <li>local</li>
+  </ul> 
+ </li>
+</ul>
+
+<section id="sec01">
+ <h2>background-attachment: ; 스크롤 여부</h2>
+ <ol>
+  <li>background-attachment:scroll; <br>
+   자신의 스크롤바에는 고정, 브라우저 스크롤바에는 스크롤.</li>
+  <li>background-attachment:fixed;<br>
+   자신의 스크롤바와 브라우저 스크롤바에 모두 고정.</li>
+  <li>background-attachment:local;<br>
+   자신의 스크롤바와 브라우저 스크롤바에 모두 스크롤.</li>
+ </ol>
+  <hr>
+ <p class="sc"><b>background-attachment:scroll;</b>
+   <br><br><br><br><br>
+  background-attachment:scroll ; <br><br><br><br><br>
+  background-attachment:scroll ; <br><br><br><br><br>
+  background-attachment:scroll ; <br><br><br><br><br>
+ </p>
+ <p class="fx"><b>background-attachment:fixed;</b>
+  <br><br><br><br><br>
+  background-attachment:fixed ; <br><br><br><br><br>
+  background-attachment:fixed ; <br><br><br><br><br>
+  background-attachment:fixed ; <br><br><br><br><br>
+ </p>
+ <p class="lc"><b>background-attachment:local;</b>
+  <br><br><br><br><br>
+  background-attachment:local ; <br><br><br><br><br>
+  background-attachment:local ; <br><br><br><br><br>
+  background-attachment:local ; <br><br><br><br><br>
+ </p>
+</section>
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+

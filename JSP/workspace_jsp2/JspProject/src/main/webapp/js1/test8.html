@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js1/test8.html</title>
+<script type="text/javascript">
+//window - location 내장객체: 웹브라우저 주소줄 객체 정의
+// window 생략가능
+// window.location.변수     => location.href 주소줄의 내용을 저장하는 변수
+// window.location.함수()   => location.reload() 주소줄 내용을 새로고침
+function fun1() {
+	alert(location.href);
+}
+function fun2() {
+	// 자바스크립트 하이퍼링크
+	location.href="test1.html";
+}
+function fun3() {
+	//새로고침
+	location.reload();
+}
+function fun4() {
+	// "test2.html이동" 메시지 출력, test2.html 페이지 이동
+	alert("test2.html이동");
+	location.href="test2.html";
+}
+</script>
+</head>
+<body>
+<input type="button" value="버튼" onclick="fun1()">
+<a href="test1.html">하이퍼링크</a>
+<input type="button" value="주소변경" onclick="fun2()">
+<input type="button" value="새로고침" onclick="fun3()">
+<input type="button" value="test2.html이동" onclick="fun4()">
+</body>
+</html>
+

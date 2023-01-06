@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js1/test4.html</title>
+<script type="text/javascript">
+// 함수정의  인사말 출력 fun1()  "안녕하세요" 
+// 함수호출 
+function fun1() {
+	alert("안녕하세요");
+	return;
+}
+fun1();
+// 함수정의 fun2() 두수를 받아서  두수의 합계 출력
+function fun2(x,y) {
+	alert(x+y);
+	return;
+}
+// 함수호출
+fun2(10,20);
+
+// 함수정의 fun3()  "커피" 리턴
+function fun3() {
+	alert("무료 커피 제공");
+	return "커피";
+}
+//함수호출
+alert("전달 받은 값 : " + fun3());
+
+//함수정의 fun4() 500원을 받아서 "음료수" 리턴
+function fun4(m) {
+	alert("500원을 받아서 음료수 리턴");
+	return "음료수";
+}
+//함수호출
+alert("전달 받은 값 : "  + fun4(500));
+
+//함수정의 fun5() 두수를 받아서  두수의 합계 리턴
+function fun5(a,b) {
+	return a+b;
+}
+//함수호출
+alert("전달 받은 값 :"+ fun5(10,20));
+alert("전달 받은 값에 나누기 2 :" + (fun5(10,20)/2));
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

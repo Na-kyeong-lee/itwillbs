@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js2/test2.html</title>
+<script type="text/javascript">
+//window - document - form 내장객체 : 폼태그 정보를 저장하는 내장객체
+// document.폼태그이름.변수 => document.fr.action
+//                          document.fr.method
+// document.폼태그이름.함수() => document.fr.submit()
+//                            document.fr.reset()
+function fun1() {
+	alert(document.fr.action);
+	alert(document.fr.method);
+// 	document.fr.submit();
+	document.fr.reset();
+}
+function fun2() {
+	// action변수 b.jsp 변경, method변수 post변경
+	// 서버에 전송하면서 action변에 있는 페이지로 이동 submit()
+	document.fr.action="b.jsp";
+	document.fr.method="post";
+	document.fr.submit();
+}
+function fun3(a) {
+	alert(a);
+	// action변수를 받은값으로 변경
+	document.fr.action=a;
+	// 서버로 전송
+	document.fr.submit();
+}
+</script>
+</head>
+<body>
+<form action="a.jsp" method="get" name="fr">
+아이디 : <input type="text" name="tx"><br>
+<input type="submit" value="전송">
+<input type="button" value="폼태그 정보버튼" onclick="fun1()">
+<input type="button" value="폼태그 정보변경" onclick="fun2()">
+<input type="button" value="장바구니" onclick="fun3('basket.jsp')">
+<input type="button" value="바로구매" onclick="fun3('order.jsp')">
+</form>
+</body>
+</html>

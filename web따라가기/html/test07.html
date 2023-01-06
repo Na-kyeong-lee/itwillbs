@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>a로 링크 걸기-1</title>
+</head>
+<body>
+<nav>
+ <a href="test07.html">링크수업(a-1)</a>
+ <a href="test07-1.html">링크수업(a-2)</a> 
+</nav>
+
+<h1>a로 링크 걸기</h1>
+ <p>&lt;a href="보여줄(이동할) 경로(주소)"&gt; <i>...</i> &lt;/a&gt; <br>
+  <i>링크 걸린 글자(...)</i>는 밑줄이 나타나고 <br>
+  색상은 3가지 중에서 나타남(초기링크=파랑, 방문한링크=보라, 활성화링크=빨강)
+ </p>
+
+<h2>링크 경로</h2>
+<ul>
+ <li>절대경로 - 항상 변함 없는 경로(주소) <br>
+  <a href="https://www.w3schools.com/default.asp">web다이쏘</a>  
+  <a href="https://www.daum.net">다음</a>   
+  <a href="https://www.naver.com/">네이버</a>   
+ </li>
+ <li>상대경로 - 웹페이지의 위치에 따라 달라지는 경로(주소) <br>
+  <a href="test06.html">이미지수업보기</a>
+ </li> 
+</ul>
+
+<hr>
+<h3>a로 보여줄 수 있는(웹브라우저가 처리 가능한) 종류</h3>
+<ul>
+ <li>웹주소(URL)  <br>
+   <a href="https://www.naver.com/" target="_blank">https://www.naver.com/</a> 
+  target="_blank" <br>   
+  <a href="https://www.daum.net/" target="_blank">
+  <img src="img/daum-logo.png" alt="daum" width="100"></a> <br>
+  <a href="https://www.itwillbs.co.kr/" target="_blank">
+   <img alt="itwill_logo" src="img/itwill_logo.png"></a>   
+ </li>
+ <li>웹페이지 (.html/.htm) <br>
+   <a href="test01.html" target="_blank">html기초</a> </li>
+ <li>이미지파일 (.gif/.jpg/.png) <br>
+  <a href="img/cat.jpg">cat</a> 
+  <a href="img/monster.png" target="_blank">몬스터</a> <br>
+  <a href="img/monster.png" target="_blank">
+  <img alt="monster" src="img/monster.png" width="50" title="이미지크게보기"></a>  <br>
+  <a href="img/bear.jpg" target="_blank">
+  <img alt="bear" src="img/bear.jpg" width="100"
+   title="섬네일 클릭시 크게 보기 가능"></a>   
+ </li>
+ <li>동영상파일 (.webm/.ogg/.mp4) <br> 
+  <a href="img/trees.mp4" title="클릭시 동영상 재생 됨">trees.mp4</a>
+     <!-- ~~~~~~~~~~ -->
+ </li>
+ <li>텍스트파일 (.txt) <br>  
+   <a href="폼테스트용 텍스트.txt" target="_blank">텍스트파일</a>
+ </li>
+</ul>
+
+<p>
+  웹브라우저가 처리 불가능한 종류(*.zip/*.hwp/...)를 링크 걸어놓으면 다운로드 됨<br>
+ <a href="img.zip">압축파일</a>
+</p>
+
+<hr>
+<h3>mailto:email주소로 email링크 걸기</h3>
+<p>
+ <a href="mailto:class@itwillbs.co.kr">아이티윌부산</a> <br>
+ <a href="mailto:class@itwillbs.co.kr">class@itwillbs.co.kr</a> 
+ <br>
+ <a href="mailto:itreset@daum.net">
+  <img alt="email" src="img/mail01.png" width="50"></a>
+ <br>
+<a href="mailto:itreset@daum.net">
+<img alt="email보내기" src="img/mail02.jpg" width="80" title="email보내기"></a>
+ <br>
+* <b>title속성으로 풍선도움말(툴팁) 추가</b>하기<br>
+ - 특정 태그 영역에 마우스오버시 부가설명 등을 나타낼 수 있음
+</p>
+
+<hr>
+<h3><mark>target="</mark>_self/<mark>_blank</mark>/_top/_parent" 
+ 링크 여는 방식 지정</h3>
+<ul>
+ <li>_self는 기본값. 현재 위치에 링크를 열어줌.</li>
+ <li><b>_blank 새 탭에 링크를 열어줌.</b></li>
+ <li>_top 프레임구조에서 나뉨없이 전체에 링크를 열어줌.</li>
+ <li>_parent 한단계 상위창에 링크를 열어줌.</li>
+</ul>
+
+<hr>
+<h3>#으로 top링크 걸기</h3>
+  <a href="#">top</a> 
+  <a href="#">
+  <img alt="top" src="img/arrow-up.png" width="50"></a>
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

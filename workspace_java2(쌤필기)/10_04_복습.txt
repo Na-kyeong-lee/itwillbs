@@ -1,0 +1,19 @@
+< 복습 >
+0930 - if - test3 - 학생점수에 대한 학점 판별 문제
+~switch case, while문
+
+< 디버깅 >
+수식줄 더블클릭 한 뒤 벌레모양 아이콘 클릭
+F6 클릭하면 디버깅 실행됨
+
+
+< scanner  - 프로그래머스 같은데서 코테 공부할 때 필요 >
+new Scanner(null) : new scan치고 ctrl + space 치기
+package 아래에 import java.util.Scanner; 가 나타남
+
+
+<switch - case >
+swi치고 ctrl + space
+
+ctrl + F : 그 파일에서 단어 검색할 때
+ctrl + H : 다른 파일에서 단어 검색

@@ -1,0 +1,11 @@
+<Oracle software>
+1. SQL Plus
+- 터미널 환경의 tool
+- 쿼리구문(SQL)을 입력/실행/결과를 확인하는 프로그램 
+- DBA, 개발자
+
+2. SQL DEveloper
+- 그래픽 환경의 tool(GUI)
+- 쿼리구문(SQL)을 입력/실행/결과를 확인하는 프로그램
+- DB 관리 명령어를 제외한 Object 관리 명령어가 실행됨!
+- 개발자
