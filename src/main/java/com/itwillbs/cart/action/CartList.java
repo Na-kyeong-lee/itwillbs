@@ -14,6 +14,7 @@ public class CartList implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String id = "naramji";	// TODO : 하드코딩 고치기
+		int crtCount = 1;
 		// 기억장소 할당 CartDAO(객체생성)
 		CartDAO dao=new CartDAO();
 		
@@ -25,7 +26,7 @@ public class CartList implements Action{
 
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("./cart/cartlist.jsp");
+		forward.setPath("./cart/CartList.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}

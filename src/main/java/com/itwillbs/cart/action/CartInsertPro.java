@@ -1,13 +1,19 @@
 package com.itwillbs.cart.action;
 
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.itwillbs.cart.db.CartDAO;
+import com.itwillbs.cart.db.CartDTO;
 import com.itwillbs.member.db.MemberDAO;
 
 public class CartInsertPro implements Action{
@@ -17,30 +23,54 @@ public class CartInsertPro implements Action{
 		// request 한글처리
 		request.setCharacterEncoding("utf-8");
 		
-		String cus_id = request.getParameter("cus_id");
-		
-		//1단계 JDBC 프로그램 가져오기
-		Class.forName("com.mysql.cj.jdbc.Driver");
-
-		//2단계 JDBC 프로그램 이용해서 DB연결
-		String dbUrl = "jdbc:mysql://localhost:3306/jspdb2?serverTimezone=Asia/Seoul";
-		String dbUser = "root";
-		String dbPass = "1234";
-		Connection con = DriverManager.getConnection(dbUrl,dbUser,dbPass);
-
-		//3단계 SQL구문 만들고 실행할 준비 select
-		// String sql = "select * from 테이블이름 where id=? and pass=?";
-		String sql = "select * from members where cus_id=?";
-		PreparedStatement pstmt = con.prepareStatement(sql);
-		pstmt.setString(1, cus_id);
-		
-		ResultSet rs=pstmt.executeQuery();
-		
-		MemberDAO dao = new MemberDAO();
+		int crt_num=Integer.parseInt(request.getParameter("crt_num"));
+		int menu_id=Integer.parseInt(request.getParameter("menu_id"));
+		int crt_price=Integer.parseInt(request.getParameter("crt_price"));
+		int crt_count=Integer.parseInt(request.getParameter("crt_count"));
 		
 		
+		CartDAO dao=new CartDAO();
 		
-		return null;
+		CartDTO dto=new CartDTO();
+		dto.setCrt_num(crt_num);
+		dto.setMenu_id(menu_id);
+		dto.setCrt_price(crt_price);
+		dto.setCrt_count(crt_count);
+		
+		dao.insertCart(dto);
+		
+		
+//		if(dto!=null) {
+//			HttpSession session=request.getSession();
+//			session.getAttribute("crt_num");
+//			session.getAttribute("menu_num");
+//			session.getAttribute("crt_price");
+//			session.getAttribute("crt_count");
+			
+			// 리턴 이동할 장바구니 담기페이지로 이동
+			// ActionForward 객체 생성
+			// 이동경로, 이동방식 담아서 forward 방식 리턴
+			ActionForward forward=new ActionForward();
+			forward.setPath("./CartInsertForm.ca");
+			forward.setRedirect(true);
+			return forward;
+			
+//		} else {
+//			//데이터 없으면 => false => 메뉴페이지로 다시 이동?
+//			response.setContentType("text/html; charset=UTF-8");
+//			PrintWriter out=response.getWriter();
+//			out.print("<script>");
+//			out.print("alert('장바구니가 비어있습니다!');");
+//			out.print("history.back();");
+//			out.print("</script>");
+//			out.close();
+//			return null;
+//		}
+		
+		
+		
+		
+		
 	}
 
 	

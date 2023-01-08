@@ -42,22 +42,23 @@ public class CartDAO {
 			//1, 2단계 메서드 호출
 			con=getConnection(); //디비연결해줌
 			
-			//3단계 sql구문을 만들고 select로 회원아이디를 기준으로 담은 제품 가져오기
-			String sql="select max(crt_num) as cus_num from cart";
+			//3단계 sql구문을 만들고 select로 회원아이디를 기준으로 카트번호 최대값 가져오기
+			String sql="select max(crt_num) as cus_id from cart";
 			// sql 구문 실행할 준비 pstmt 변수에 담아줌
 			pstmt=con.prepareStatement(sql);
+			// select절은 ResultSet에 담아서 실행
 			rs=pstmt.executeQuery();
 			int num=0;
-			if(rs.next()) {
+			if(rs.next()) { //다음행 이동할 때마다 +1
 				num=rs.getInt("crt_num")+1;
 			}
 			
 			Connection con=getConnection();
-			String sql2="insert into cart(crt_num,menu_num,crt_price,crt_count) value(?,?,?,?)";
+			String sql2="insert into cart(crt_num,menu_id,crt_price,crt_count) value(?,?,?,?)";
 			PreparedStatement pstmt2=con.prepareStatement(sql2);
 			//?에 값을 넣어서 sql구문 완성
 			pstmt.setInt(1, dto.getCrt_num());
-			pstmt.setInt(2, dto.getMenu_num());
+			pstmt.setInt(2, dto.getMenu_id());
 			pstmt.setInt(3, dto.getCrt_price());
 			pstmt.setInt(4, dto.getCrt_count());
 			//select절은 디비에서 불러와서 값을 rs에 담아서 출력해야함
@@ -99,9 +100,9 @@ public class CartDAO {
 		
 		try {
 			con=getConnection();
-			String sql="delete from cart where menu_num=?";
+			String sql="delete from cart where menu_id=?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, dto.getMenu_num());
+			pstmt.setInt(1, dto.getMenu_id());
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
@@ -111,14 +112,13 @@ public class CartDAO {
 		}
 	}
 	
-	// 장바구니 목록 조회
-	public List<CartDTO> getCartList(String id) {
+	public List<CartDTO> getCartList(String cus_id) {
 		List<CartDTO> cartList = new ArrayList<CartDTO>();
 		try {
 			con = getConnection();
 			String sql="select * from cart where cus_id=?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, id);
+			pstmt.setString(1, cus_id);
 
 			rs = pstmt.executeQuery();
 			
@@ -126,7 +126,7 @@ public class CartDAO {
 				CartDTO dto=new CartDTO();
 				dto.setCrt_num(rs.getInt("crt_num"));
 				dto.setCus_id(rs.getString("cus_id"));
-				dto.setMenu_num(rs.getInt("menu_num"));
+				dto.setMenu_id(rs.getInt("menu_id"));
 				dto.setCrt_price(rs.getInt("crt_price"));
 				dto.setCrt_count(rs.getInt("crt_count"));
 				
@@ -142,9 +142,9 @@ public class CartDAO {
 	}
 
 
+
 	}
 	
 	
 	
 	
-}

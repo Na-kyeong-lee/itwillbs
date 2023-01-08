@@ -4,7 +4,7 @@ public class CartDTO {
 	//멤버변수
 	private int crt_num;  //카트번호
 	private String cus_id;	  //회원아이디
-	private int menu_num; //제품번호
+	private int menu_id; //제품번호
 	private int crt_price;//금액
 	private int crt_count;//수량
 	
@@ -24,11 +24,11 @@ public class CartDTO {
 	public void setCus_id(String cus_id) {
 		this.cus_id = cus_id;
 	}
-	public int getMenu_num() {
-		return menu_num;
+	public int getMenu_id() {
+		return menu_id;
 	}
-	public void setMenu_num(int menu_num) {
-		this.menu_num = menu_num;
+	public void setMenu_id(int menu_id) {
+		this.menu_id = menu_id;
 	}
 	public int getCrt_price() {
 		return crt_price;

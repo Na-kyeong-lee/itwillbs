@@ -25,6 +25,8 @@ public class CartFrontController extends HttpServlet{
 		
 		String strpath=requestURI.substring(contextPath.length());
 		System.out.println("뽑은 주소 strpath : " + strpath); //path에 최종적으로 값이 담김
+		
+		
 		//가상주소 비교 => 실제주소(파일) 맵핑(연결)
 		ActionForward forward=null;
 		Action action=null;
@@ -79,16 +81,16 @@ public class CartFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		
-//		} else if(strpath.equals("/CartDelete.ca")) {
-//			//DB에 가서 num에 대한 글을 가져와서 updatePro.jsp로 이동해줌
-//			//BoardUpdatePro객체생성
-//			action=new CartDelete();
-//			//메서드 호출
-//			try {
-//				forward=action.execute(request, response);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
+		} else if(strpath.equals("/CartDelete.ca")) {
+			//DB에 가서 num에 대한 글을 가져와서 updatePro.jsp로 이동해줌
+			//BoardUpdatePro객체생성
+			action=new CartDelete();
+			//메서드 호출
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		 
 		

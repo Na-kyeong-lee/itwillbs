@@ -1,5 +1,7 @@
 package com.itwillbs.cart.action;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,11 +12,17 @@ public class CartUpdateForm implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int crtNum=Integer.parseInt(request.getParameter("crt_num"));
+		String cusId=request.getParameter("id");
+		int menuNum=Integer.parseInt(request.getParameter("menu_num"));
+		int crtPrice=Integer.parseInt(request.getParameter("crt_price"));
+		int crtCount=Integer.parseInt(request.getParameter("crt_count"));
 		
-		String cus_id=request.getParameter("cus_id");
+		
 		//CartDAO 객체생성 기억장소 할당=>dao기억장소 주소저장
 		CartDAO dao=new CartDAO();
-		CartDTO dto=new CartDTO();
+		
+		List<CartDTO> dto=dao.getCartList(cusId);
 		request.setAttribute("dto", dto);
 		
 		

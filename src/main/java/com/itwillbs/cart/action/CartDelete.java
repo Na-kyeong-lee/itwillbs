@@ -17,17 +17,18 @@ public class CartDelete implements Action {
 		int menu_num=Integer.parseInt(request.getParameter("menu_num"));
 		
 		CartDAO dao=new CartDAO();
-		List<CartDTO> dto=dao.getCartList();
+		List<CartDTO> dto=dao.getCartList(cus_id);
 		
 		//dto null이 아니면 => 메뉴삭제, 장바구니 이동
 		//dto null이면 => "제품을 담아주세요" => 뒤로이동
-		if(dto!=null) {
-			dao.deleteCart();
+		if(dto!=null) { //1) dto(id)가 null이 아니면
+			//2)dto의 menu_num을 가져와서 dao의 deleteCart메서드 실행시켜줌
+			dao.deleteCart(dto.get(menu_num));
 			//세션초기화(java는 HttpSession)
-			HttpSession session=request.getSession();
-			session.invalidate();
+			HttpSession session=request.getSession(); //3)세션가져와서
+			session.invalidate(); //4)초기화
 			
-			// ./CartList.ca로 이동
+			// 5)Actionforward 방식으로 "./CartList.ca"로 이동
 			ActionForward forward=new ActionForward();
 			forward.setPath("./CartList.ca");
 			forward.setRedirect(true);

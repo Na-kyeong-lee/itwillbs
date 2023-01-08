@@ -16,11 +16,11 @@ public class CartUpdatePro implements Action {
 		// request한글처리
 		request.setCharacterEncoding("utf-8");
 
-		int menu_num=Integer.parseInt(request.getParameter("menu_num"));
+		int menu_id=Integer.parseInt(request.getParameter("menu_id"));
 		int crt_count=Integer.parseInt(request.getParameter("crt_count"));
 		
 		CartDTO dto=new CartDTO();
-		dto.setMenu_num(menu_num);
+		dto.setMenu_id(menu_id);
 		dto.setCrt_count(0);
 		
 		CartDAO dao=new CartDAO();
