@@ -6,8 +6,6 @@ import javax.servlet.http.HttpSession;
 
 import com.itwillbs.cart.db.CartDAO;
 import com.itwillbs.cart.db.CartDTO;
-import com.itwillbs.member.db.MemberDAO;
-import com.itwillbs.member.db.MemberDTO;
 
 public class CartUpdatePro implements Action {
 

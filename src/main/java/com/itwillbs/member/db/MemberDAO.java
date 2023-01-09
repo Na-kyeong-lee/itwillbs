@@ -1,219 +1,306 @@
 package com.itwillbs.member.db;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
-
 public class MemberDAO {
+	//멤버변수
 	
-	Connection con=null;
-	PreparedStatement pstmt=null;
-	PreparedStatement pstmt2=null;
-	ResultSet rs=null;
+	//기본생성자 => 생략가능
 	
-	// 디비연결 메서드
+	// 디비연결하는 메서드 1,2단계
 	public Connection getConnection() throws Exception {
-		Context init=new InitialContext();
-		DataSource ds= (DataSource)init.lookup("java:comp/env/jdbc/Mysql");
-		con=ds.getConnection();
+		// 예외처리를 함수 호출하는 곳으로 전달
+		
+		//1단계 JDBC 프로그램 가져오기
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		//2단계 JDBC 프로그램 이용해서 데이터베이스 연결
+		String dbUrl="jdbc:mysql://localhost:3306/jspdb2?serverTimezone=Asia/Seoul";
+		String dbUser="root";
+		String dbPass="1234";
+		Connection con=
+		    DriverManager.getConnection(dbUrl, dbUser, dbPass);
 		return con;
-	} // 디비연결 메서드
+	}
 	
-	// close 메서드
-	public void close() {
-		if(con!=null)try{con.close();} catch(SQLException e) {}
-		if(pstmt!=null)try{pstmt.close();} catch(SQLException e) {}
-		if(pstmt2!=null)try{pstmt2.close();}catch(SQLException ex){}
-		if(rs!=null)try{rs.close();} catch(SQLException e) {}
-	} // close 메서드
+//	//멤버함수(메서드)
+//	// 디비작업 => 1~4단계 자바파일에 메서드 정의
+//	public void insertMember(String id,String pass,String name,Timestamp date) {
+//		// 1~4단계
+//		System.out.println("MemberDAO insertMember()");
+//		System.out.println("전달받은 id 값 : " + id);
+//		System.out.println("전달받은 pass 값 : " + pass);
+//		System.out.println("전달받은 name 값 : " + name);
+//		System.out.println("전달받은 date 값 : " + date);
+//		
+//		try {
+//			// 예외(에러)가 발생할 가능성 높은 코드(명령)
+//			// 1, 2 단계 메서드 호출
+//			Connection con = getConnection();
+//
+//			// 3단계 sql구문을 만들고 실행할 준비 insert
+//			String sql="insert into members(id,pass,name,date) values(?,?,?,?)";
+//			PreparedStatement pstmt =con.prepareStatement(sql);
+//			// ? 표 값을 넣어서 sql구문 완성
+//			pstmt.setString(1, id);
+//			pstmt.setString(2, pass);
+//			pstmt.setString(3, name);
+//			pstmt.setTimestamp(4, date);
+//
+//			// 4단계 : sql구문 실행 (insert)
+//			pstmt.executeUpdate();
+//			
+//		} catch (Exception e) {
+//			// 예외가 발생하면 처리하는 곳=> 에러메시지 출력
+//			e.printStackTrace();
+//		}finally {
+//			// 예외 상관없이 마무리 작업 
+//			// => Connection, PreparedStatement
+//			// => 기억장소 해제
+//		}
+//		return;
+//	}//insertMember() 메서드
 	
-	//아이디중복체크 메서드 insertIdCheck
-	public int insertIdCheck(String cus_id){
-		int result = -1;
-		try {
-			con= getConnection();
-			String sql = "select cus_id from customer where cus_id=?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, cus_id);
-			
-			rs=pstmt.executeQuery();
-			
-			if(rs.next()){result = 0;} 
-			else{result = 1;}
-
-		} catch (Exception e) { e.printStackTrace(); } finally { close(); }
-		
-		return result;
-	}//insertIdCheck
-		
-	// insertMember 메서드
+	
+	//멤버함수(메서드)
+	// 디비작업 => 1~4단계 자바파일에 메서드 정의
+//	                        (바구니 주소를 저장하는 변수)
 	public void insertMember(MemberDTO dto) {
+		// 1~4단계
+		System.out.println("MemberDAO insertMember()");
+		System.out.println("전달받은 바구니(dto)의 주소 : "+dto);
+		System.out.println("전달받은 바구니안에 있는 id 값 : " + dto.getId());
+		System.out.println("전달받은 바구니안에 있는 pass 값 : " + dto.getPass());
+		System.out.println("전달받은 바구니안에 있는 name 값 : " + dto.getName());
+		System.out.println("전달받은 바구니안에 있는 date 값 : " + dto.getDate());
 		
 		try {
-			con= getConnection();
-			String sql2 = "select max(cus_num) as cus_num from customer";
-			pstmt2 = con.prepareStatement(sql2);
-			rs = pstmt2.executeQuery();
-			int num = 0;
-			if(rs.next()) {
-				num= rs.getInt("cus_num")+1;
-			}
-			
-			Connection con=getConnection();
-			String sql="insert into customer(cus_num,cus_id,cus_pass,cus_name,cus_phone,cus_email,cus_birth) values(?,?,?,?,?,?,?)";
-			PreparedStatement pstmt=con.prepareStatement(sql);
-			
-			pstmt.setInt(1, num);
-			pstmt.setString(2, dto.getCus_id());
-			pstmt.setString(3, dto.getCus_pass());
-			pstmt.setString(4, dto.getCus_name());
-			pstmt.setString(5, dto.getCus_phone());
-			pstmt.setString(6, dto.getCus_email());
-			pstmt.setString(7, dto.getCus_birth());
-			
-			pstmt.executeUpdate(); //sql insert,update,delete 때 사용
-			
-		} catch (Exception e) { e.printStackTrace(); } finally { close(); }
-	
-	} // insertMember 메서드
-	
-	// 카카오 insertMember 메서드
-	public void KinsertMember(MemberDTO dto) {
-		
-		try {
-			con= getConnection();
-			String sql2 = "select max(cus_num) as cus_num from customer";
-			pstmt2 = con.prepareStatement(sql2);
-			rs = pstmt2.executeQuery();
-			
-			int num = 0;
-			if(rs.next()) {
-				num= rs.getInt("cus_num")+1;
-			}
-			
-			Connection con=getConnection();
-			String sql="insert into customer(cus_num,cus_id,cus_pass,cus_name,cus_email) values(?,?,?,?,?)";
-			PreparedStatement pstmt=con.prepareStatement(sql);
-			
-			pstmt.setInt(1, num);
-			pstmt.setString(2, dto.getCus_id());
-			pstmt.setString(3, dto.getCus_id());
-			pstmt.setString(4, dto.getCus_name());
-			pstmt.setString(5, dto.getCus_email());
-			
+			// 예외(에러)가 발생할 가능성 높은 코드(명령)
+			// 1, 2 단계 메서드 호출
+			Connection con = getConnection();
+
+			// 3단계 sql구문을 만들고 실행할 준비 insert
+			String sql="insert into members(id,pass,name,date) values(?,?,?,?)";
+			PreparedStatement pstmt =con.prepareStatement(sql);
+			// ? 표 값을 넣어서 sql구문 완성
+			pstmt.setString(1, dto.getId());
+			pstmt.setString(2, dto.getPass());
+			pstmt.setString(3, dto.getName());
+			pstmt.setTimestamp(4, dto.getDate());
+
+			// 4단계 : sql구문 실행 (insert)
 			pstmt.executeUpdate();
 			
-		} catch (Exception e) { e.printStackTrace(); } finally { close(); }
-	} // 카카오 KinsertMember 메서드 닫음
+		} catch (Exception e) {
+			// 예외가 발생하면 처리하는 곳=> 에러메시지 출력
+			e.printStackTrace();
+		}finally {
+			// 예외 상관없이 마무리 작업 
+			// => Connection, PreparedStatement
+			// => 기억장소 해제
+		}
+		return;
+	}//insertMember() 메서드
 	
-	// userCheck()
-	public MemberDTO userCheck(String cus_id, String cus_pass) {
+	// 리턴할형MemberDTO userCheck(String id,String pass)
+	// 메서드 정의
+	public MemberDTO userCheck(String id,String pass) {
+		// MemberDTO 변수 선언 초기값 null
 		MemberDTO dto=null;
-		
 		try {
-			Connection con=getConnection();
-			String sql="select * from customer where cus_id=? and cus_pass=?";
+			//1,2 디비연결
+			Connection con = getConnection();
+			// 3단계 sql구문을 만들고 실행할 준비 select
+			//String sql="select * from 테이블이름 where id=? and pass=?";
+			String sql="select * from members where id=? and pass=?";
 			PreparedStatement pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, cus_id);
-			pstmt.setString(2, cus_pass);
-			
+			pstmt.setString(1, id);
+			pstmt.setString(2, pass);
+			//4단계 : sql구문 실행 , 실행결과 저장(select)
+			//ResultSet : sql구문 실행 결과를 저장하는 자바 내장객체
 			ResultSet rs=pstmt.executeQuery();
-			
-			if(rs.next()) {
+			//5단계 : 결과를 출력, 배열저장 (select)
+			//if 다음행이동=> 데이터 있으면 => true =>"아이디 비밀번호 일치"
+			//else        데이터 없으면 => false => "아이디 비밀번호 틀림"
+			if(rs.next()){
+				//데이터 있으면 => true =>"아이디 비밀번호 일치"
+				//out.println("아이디 비밀번호 일치");
+				// id pass name date => 바구니 MemberDTO 저장
+				// MemberDTO 객체생성
 				dto=new MemberDTO();
-				dto.setCus_id(rs.getString("cus_id"));
-				dto.setCus_pass(rs.getString("cus_pass"));
-				dto.setCus_name(rs.getString("cus_name"));
-			} else {}
-			
-		} catch (Exception e) {e.printStackTrace();} finally {close();}
-		return dto;
-	} // userCheck()
-	
-	// 멤버정보조회 메서드
-	public MemberDTO getMember(String cus_id) {
-		MemberDTO dto=null;
-		
-		try {
-			con=getConnection();
-			String sql="select * from customer where cus_id=?";
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, cus_id);
-			rs=pstmt.executeQuery();
-			
-			if(rs.next()) {
-				dto=new MemberDTO();
-				dto.setCus_num(rs.getInt("cus_num"));
-				dto.setCus_id(rs.getString("cus_id"));
-				dto.setCus_pass(rs.getString("cus_pass"));
-				dto.setCus_name(rs.getString("cus_name"));
-				dto.setCus_phone(rs.getString("cus_phone"));
-				dto.setCus_email(rs.getString("cus_email"));
-				dto.setCus_birth(rs.getString("cus_birth"));
+				// set메서드 호출 값(디비 가져온값)을 저장
+				dto.setId(rs.getString("id"));
+				dto.setPass(rs.getString("pass"));
+				dto.setName(rs.getString("name"));
+				dto.setDate(rs.getTimestamp("date"));
 				
-			} else {}
-		} catch (Exception e) {e.printStackTrace();} finally {close();}
-		return dto;
-	} // 멤버정보조회 메서드
-	
-	//updateMember()
-	public void updateMember(MemberDTO dtoUpdate) {
-		
-		try {
-			con=getConnection();
-			String sql="update customer set cus_name=?,cus_phone=?,cus_email=?,cus_birth=? where cus_id=?";
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, dtoUpdate.getCus_name());
-			pstmt.setString(2, dtoUpdate.getCus_phone());
-			pstmt.setString(3, dtoUpdate.getCus_email());
-			pstmt.setString(4, dtoUpdate.getCus_birth());
-			pstmt.setString(5, dtoUpdate.getCus_id());
-			
-			pstmt.executeUpdate();
-			
-		} catch (Exception e) {e.printStackTrace();} finally {close();}
-	} //updateMember()
-	
-	// 멤버 삭제
-	public void deleteMember(String cus_id) {
-		
-		try {
-			con=getConnection();
-			String sql="delete from customer where cus_id=?";
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, cus_id);
-			pstmt.executeUpdate();
-			
-		} catch (Exception e) {e.printStackTrace();} finally {close();}
-	} // 멤버 삭제
-	
-	// 멤버 목록 조회
-	public List getMemberList() {
-		List<MemberDTO> memberList=new ArrayList<MemberDTO>();
-		
-		try {
-			con=getConnection();
-			String sql="select * from customer";
-			pstmt=con.prepareStatement(sql);
-			rs=pstmt.executeQuery();
-			
-			while(rs.next()) {
-				MemberDTO dto=new MemberDTO();
-				dto.setCus_id(sql);
-				dto.setCus_pass(rs.getString("cus_pass"));
-				dto.setCus_name(rs.getString("cus_name"));
-				
-				memberList.add(dto);
+			}else{
+				//데이터 없으면 => false => "아이디 비밀번호 틀림"
+//				out.println("아이디 비밀번호 틀림");
+				// "입력하신 정보 틀림", 뒤로이동
+//					초기값 null
 			}
-		} catch (Exception e) {e.printStackTrace();} finally {close();}
-		return memberList;
-	} // 멤버 목록 조회
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			//마무리
+		}
+		System.out.println("회원정보가 저장된 리턴할 주소 : " + dto);
+		return dto;
+		
+	}// userCheck()
 	
-}
+	// 리턴할형MemberDTO getMember(String id)
+	// 메서드 정의
+	public MemberDTO getMember(String id) {
+		// MemberDTO 변수 선언 초기값 null
+		MemberDTO dto=null;
+		try {
+			//1,2 디비연결
+			Connection con = getConnection();
+			// 3단계 sql구문을 만들고 실행할 준비 select
+			//String sql="select * from 테이블이름 where id=? and pass=?";
+			String sql="select * from members where id=?";
+			PreparedStatement pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			//4단계 : sql구문 실행 , 실행결과 저장(select)
+			//ResultSet : sql구문 실행 결과를 저장하는 자바 내장객체
+			ResultSet rs=pstmt.executeQuery();
+			//5단계 : 결과를 출력, 배열저장 (select)
+			//if 다음행이동=> 데이터 있으면 => true =>"아이디 비밀번호 일치"
+			//else        데이터 없으면 => false => "아이디 비밀번호 틀림"
+			if(rs.next()){
+				//데이터 있으면 => true =>"아이디  일치"
+//				out.println("아이디 비밀번호 일치");
+				// id pass name date => 바구니 MemberDTO 저장
+				// MemberDTO 객체생성
+				dto=new MemberDTO();
+				// set메서드 호출 값(디비 가져온값)을 저장
+				dto.setId(rs.getString("id"));
+				dto.setPass(rs.getString("pass"));
+				dto.setName(rs.getString("name"));
+				dto.setDate(rs.getTimestamp("date"));
+				
+			}else{
+				//데이터 없으면 => false => "아이디  틀림"
+//				out.println("아이디 비밀번호 틀림");
+				// "입력하신 정보 틀림", 뒤로이동
+//					초기값 null
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			//마무리
+		}
+		System.out.println("회원정보가 저장된 리턴할 주소 : " + dto);
+		return dto;
+	}// getMember()
+	
+// 리턴할형없음 void updateMember(수정할 정보MemberDTO 주소) 메서드 정의
+	public void updateMember(MemberDTO dto) {
+		// 1~4단계
+		System.out.println("MemberDAO updateMember()");
+		System.out.println("전달받은 바구니(dto)의 주소 : "+dto);
+		System.out.println("전달받은 바구니안에 있는 id 값 : " + dto.getId());
+		System.out.println("전달받은 바구니안에 있는 pass 값 : " + dto.getPass());
+		System.out.println("전달받은 바구니안에 있는 name 값 : " + dto.getName());
+		System.out.println("전달받은 바구니안에 있는 date 값 : " + dto.getDate());
+		
+		try {
+			// 예외(에러)가 발생할 가능성 높은 코드(명령)
+			// 1, 2 단계 메서드 호출
+			Connection con = getConnection();
+			
+//		 	3단계 sql update, 4단계 실행, main.jsp 이동
+			String sql="update members set name=? where id=?";
+			PreparedStatement pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getId());
+			// 4단계 실행
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			// 예외가 발생하면 처리하는 곳=> 에러메시지 출력
+			e.printStackTrace();
+		}finally {
+			// 예외 상관없이 마무리 작업 
+			// => Connection, PreparedStatement
+			// => 기억장소 해제
+		}
+		
+	}//updateMember() 메서드	
+	
+	// 리턴할형없음 void deleteMember(삭제할 정보) 메서드 정의
+		public void deleteMember(String id) {
+			
+			try {
+				// 예외(에러)가 발생할 가능성 높은 코드(명령)
+				// 1, 2 단계 메서드 호출
+				Connection con = getConnection();
+				
+//			 	3단계 sql delete, 4단계 실행, 세션초기화, main.jsp 이동
+				String sql="delete from members where id=?";
+				PreparedStatement pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				// 4단계 실행
+				pstmt.executeUpdate();
+
+			} catch (Exception e) {
+				// 예외가 발생하면 처리하는 곳=> 에러메시지 출력
+				e.printStackTrace();
+			}finally {
+				// 예외 상관없이 마무리 작업 
+				// => Connection, PreparedStatement
+				// => 기억장소 해제
+			}
+
+		}//updateMember() 메서드	
+		
+//		List memberList =dao.getMemberList();
+		public List<MemberDTO> getMemberList() {
+			// 배열 객체생성할때 같은형이 저장되게 정의=> 제네릭타입
+//			List memberList=new ArrayList();
+			List<MemberDTO> memberList=new ArrayList<MemberDTO>();
+			System.out.println("배열의 주소:"+memberList);
+			try {
+				//1, 2 단계 메서드 호출
+				Connection con = getConnection();
+				// 3단계 sql구문을 만들고 실행할 준비 select
+				//String sql="select * from 테이블이름";
+				String sql="select * from members";
+				PreparedStatement pstmt=con.prepareStatement(sql);
+				//4단계 : sql구문 실행 , 실행결과 저장(select)
+				//ResultSet : sql구문 실행 결과를 저장하는 자바 내장객체
+				ResultSet rs=pstmt.executeQuery();
+				//5단계 : while 결과를 출력, 배열저장 (select)
+				while(rs.next()){
+					//한사람에 데이터 id pass name date => MemberDTO
+					MemberDTO dto=new MemberDTO();
+					dto.setId(rs.getString("id"));
+					dto.setPass(rs.getString("pass"));
+					dto.setName(rs.getString("name")); 
+					dto.setDate(rs.getTimestamp("date"));  
+					// 한사람의 데이터를 배열 한칸에 저장 => memberList
+					memberList.add(dto);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				// 예외 상관없이 마무리 작업 
+				// => Connection, PreparedStatement
+				// => 기억장소 해제
+			}
+			return memberList;
+		}
+		
+	
+}//클래스
+
+
+
+

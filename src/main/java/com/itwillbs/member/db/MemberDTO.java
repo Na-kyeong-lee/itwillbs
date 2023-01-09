@@ -1,59 +1,42 @@
 package com.itwillbs.member.db;
 
+import java.sql.Timestamp;
+
 public class MemberDTO {
+	// 회원가입 한 내용을 담아서 전달해주는 바구니
+	// 멤버변수 => 접근 제한 => 데이터 은닉, 캡슐화
+	private String id;
+	private String pass;
+	private String name;
+	private Timestamp date;
+	// 생성자
 	
-	private int cus_num;
-	private String cus_id;
-	private String cus_pass;
-	private String cus_name;
-	private String cus_phone;
-	private String cus_email;
-	private String cus_birth;
+	//멤버함수(메서드)
+	//  set() : 멤버변수에 외부에 데이터를 저장
+	//  get() : 외부에서 멤버변수 데이터를 가져다 사용
 	
-	public int getCus_num() {
-		return cus_num;
+	public String getId() {
+		return id;
 	}
-	public void setCus_num(int cus_num) {
-		this.cus_num = cus_num;
+	public void setId(String id) {
+		this.id = id;
 	}
-	public String getCus_id() {
-		return cus_id;
+	public String getPass() {
+		return pass;
 	}
-	public void setCus_id(String cus_id) {
-		this.cus_id = cus_id;
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
-	public String getCus_pass() {
-		return cus_pass;
+	public String getName() {
+		return name;
 	}
-	public void setCus_pass(String cus_pass) {
-		this.cus_pass = cus_pass;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getCus_name() {
-		return cus_name;
+	public Timestamp getDate() {
+		return date;
 	}
-	public void setCus_name(String cus_name) {
-		this.cus_name = cus_name;
+	public void setDate(Timestamp date) {
+		this.date = date;
 	}
-	public String getCus_phone() {
-		return cus_phone;
-	}
-	public void setCus_phone(String cus_phone) {
-		this.cus_phone = cus_phone;
-	}
-	public String getCus_email() {
-		return cus_email;
-	}
-	public void setCus_email(String cus_email) {
-		this.cus_email = cus_email;
-	}
-	public String getCus_birth() {
-		return cus_birth;
-	}
-	public void setCus_birth(String cus_birth) {
-		this.cus_birth = cus_birth;
-	}
-	
-
-	
-
 }

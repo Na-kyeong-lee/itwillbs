@@ -15,6 +15,17 @@
 => 개발자가 주소매핑 작업을 하도록 처리담당자(서블릿) 지정시켜줌 -->
 <!-- http://localhost:8080/Model2/insertForm.me -->
 <servlet>
+	<servlet-name>MemberFrontController</servlet-name>
+	<servlet-class>com.itwillbs.member.action.MemberFrontController</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>MemberFrontController</servlet-name>
+	<url-pattern>*.me</url-pattern>
+</servlet-mapping>
+
+
+
+<servlet>
 	<servlet-name>CartFrontController</servlet-name>
 	<servlet-class>com.itwillbs.cart.action.CartFrontController</servlet-class>  <!-- 실제 파일 연결 -->
 </servlet>
@@ -24,24 +35,5 @@
 </servlet-mapping>
   
   
- <servlet>
-    <servlet-name>MemberFrontController</servlet-name>
-    <servlet-class>com.itwillbs.member.action.MemberFrontController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>MemberFrontController</servlet-name>
-    <url-pattern>*.me</url-pattern>
-  </servlet-mapping>
-  
-  
-  <servlet>
-    <servlet-name>BoardFrontController</servlet-name>
-    <servlet-class>com.itwillbs.board.action.BoardFrontController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>BoardFrontController</servlet-name>
-    <url-pattern>*.bo</url-pattern>
-  </servlet-mapping>
-    
   
 </web-app>

@@ -11,8 +11,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.itwillbs.member.db.MemberDTO;
-
 
 public class CartDAO {
 	Connection con=null;

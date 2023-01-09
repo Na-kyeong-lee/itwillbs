@@ -16,7 +16,7 @@
 <h1>장바구니</h1>
 <%
 //세션값 가져오기
-String id=(String)session.getAttribute("cus_id");
+String id=(String)session.getAttribute("id");
 if(id==null){
 	%>
 	<script type="text/javascript">
@@ -36,8 +36,6 @@ List<CartDTO> cartList=dao.getCartList(id);
 
 
 
-//숫자 천단위 구분
-// DecimalFormat dFormat=new DecimalFormat("###,###");
 %>
 <table width="100">
 	<tr>
